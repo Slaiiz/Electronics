@@ -1,0 +1,9 @@
+Change Component Parameter Footprint in C11 Old=RAD-0.3 New=CAPC2012N
+Change Component Parameter Footprint in C12 Old=RAD-0.3 New=CAPC2012N
+Change Component Parameter Footprint in C13 Old=RAD-0.3 New=CAPC2012N
+Change Component Parameter Footprint in C14 Old=RAD-0.3 New=CAPC1608N
+Change Component Parameter Footprint in C15 Old=RAD-0.3 New=CAPC1608N
+Change Component Parameter Footprint in D4 Old=LED-0 New=LED 0805
+Change Component Parameter Footprint in FB1 Old=0402-A New=INDC1608AN
+Change Component Parameter Comment in R4 Old= New=470?
+Change Component Parameter Footprint in U2 Old= New=TD03B_N
