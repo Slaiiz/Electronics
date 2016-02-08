@@ -1,0 +1,11 @@
+Output: Simple BOM
+Type  : SimpleBOM
+From  : Variant [[No Variations]] of Project [TP2_vchesnea.PrjPcb]
+   Generated File[TP2.BOM]
+   Generated File[TP2.CSV]
+
+
+Files Generated   : 2
+Documents Printed : 0
+
+Finished Output Generation At 12:23:18 PM On 2/8/2016
