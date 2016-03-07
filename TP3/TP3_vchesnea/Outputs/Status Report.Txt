@@ -1,0 +1,10 @@
+Output: Report Project Hierarchy
+Type  : ReportHierarchy
+From  : Variant [[No Variations]] of Project [TP3_vchesnea.PrjPcb]
+   Generated File[power.REP]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 3:24:17 PM On 3/7/2016
