@@ -8,38 +8,84 @@
 #include "p32xxxx.h"
 #include "types.h"
 
-void    configure_timer(void)
+void    configure_timer_type_a(u8 ratio)
 {
     // Enable timer
     T1CONbits.ON = 1;
     // Timer is external
     T1CONbits.TCS = 1;
     // 1:1 clock ratio
-    T1CONbits.TCKPS = 0;
+    T1CONbits.TCKPS = ratio;
 }
 
+void    configure_timer_type_b(u8 ratio)
+{
+    // Enable timer
+    T2CONbits.ON = 1;
+    // ratio 1:256
+    T2CONbits.TCKPS = ratio;
+    // 32bits mode
+    T2CONbits.T32 = 1;
+}
+
+
+// using timer type B
+/*
 void    main(void)
 {
-    u16 hz;
+    u16 half_hz;
     u8  bouton;
+    u8  last_bouton;
+    u16 periode;
 
-    configure_timer();
-    hz = 1;
+    periode = 536;
+    configure_timer_type_b(0b000);
+    half_hz = 8;
     TRISFbits.TRISF1 = 0;
     TRISDbits.TRISD8 = 1;
     while (1) {
-        if (TMR1 % (32768 / hz) < (32768 / (hz * 2)))
+        if (TMR2 % periode < periode / 2)
             PORTFbits.RF1 = 1;
         else
             PORTFbits.RF1 = 0;
-        if (!PORTDbits.RD8 && bouton)
+        if (!last_bouton && bouton)
         {
-            if (hz < 4)
-                hz *= 2;
+            if (half_hz <= 8)
+                half_hz *= 2;
             else
-                hz =  1;
+                half_hz =  1;
         }
-        bouton = PORTDbits.RD8;
+        bouton      = last_bouton;
+        last_bouton = PORTDbits.RD8;
     }
+}
+*/
+// using RTC timer (type A).
 
+
+void    main(void)
+{
+    u16 half_hz;
+    u8  bouton;
+    u8  last_bouton;
+
+    configure_timer_type_a(0);
+    half_hz = 1;
+    TRISFbits.TRISF1 = 0;
+    TRISDbits.TRISD8 = 1;
+    while (1) {
+        if (TMR1 % (65536 / half_hz) < (65536 / (half_hz * 2)))
+            PORTFbits.RF1 = 1;
+        else
+            PORTFbits.RF1 = 0;
+        if (!last_bouton && bouton)
+        {
+            if (half_hz <= 8)
+                half_hz *= 2;
+            else
+                half_hz =  1;
+        }
+        bouton      = last_bouton;
+        last_bouton = PORTDbits.RD8;
+    }
 }
