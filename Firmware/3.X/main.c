@@ -18,50 +18,10 @@ void    configure_timer_type_a(u8 ratio)
     T1CONbits.TCKPS = ratio;
 }
 
-void    configure_timer_type_b(u8 ratio)
+void    configure_button_interrupt()
 {
-    // Enable timer
-    T2CONbits.ON = 1;
-    // ratio 1:256
-    T2CONbits.TCKPS = ratio;
-    // 32bits mode
-    T2CONbits.T32 = 1;
+    INTCONbits.INT1EP = 1;
 }
-
-
-// using timer type B
-/*
-void    main(void)
-{
-    u16 half_hz;
-    u8  bouton;
-    u8  last_bouton;
-    u16 periode;
-
-    periode = 536;
-    configure_timer_type_b(0b000);
-    half_hz = 8;
-    TRISFbits.TRISF1 = 0;
-    TRISDbits.TRISD8 = 1;
-    while (1) {
-        if (TMR2 % periode < periode / 2)
-            PORTFbits.RF1 = 1;
-        else
-            PORTFbits.RF1 = 0;
-        if (!last_bouton && bouton)
-        {
-            if (half_hz <= 8)
-                half_hz *= 2;
-            else
-                half_hz =  1;
-        }
-        bouton      = last_bouton;
-        last_bouton = PORTDbits.RD8;
-    }
-}
-*/
-// using RTC timer (type A).
-
 
 void    main(void)
 {
