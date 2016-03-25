@@ -1,0 +1,14 @@
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 2:52:26 PM On 3/20/2016
+
+Output: Generates pick and place files
+Type  : Pick Place
+From  : Variant [[No Variations]] of PCB Document [TP3PCB.PcbDoc]
+   Generated File[Pick and Place.csv]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 2:52:27 PM On 3/20/2016
