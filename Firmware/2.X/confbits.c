@@ -1,3 +1,8 @@
+
+// PIC32MX340F512H Configuration Bit Settings
+
+// 'C' source line config statements
+
 #include <xc.h>
 
 // DEVCFG3
@@ -25,4 +30,5 @@
 #pragma config PWP = OFF                // Program Flash Write Protect (Disable)
 #pragma config BWP = OFF                // Boot Flash Write Protect bit (Protection Disabled)
 #pragma config CP = OFF                 // Code Protect (Protection Disabled)
+
 
