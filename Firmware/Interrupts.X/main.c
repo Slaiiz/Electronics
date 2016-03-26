@@ -7,41 +7,63 @@
 
 #include <xc.h>
 #include <sys/attribs.h> // This unlocks the __ISR macro
+
 #include "types.h"
 
-void    __ISR(_TIMER_1_VECTOR, ipl2) toggle_led(void)
+void __ISR(_TIMER_1_VECTOR, IPL2AUTO) Timer1Handler(void)
 {
-    _RF1 ^= 1;
+    _LATF1 ^= 1;
+    IFS0bits.T1IF = 0; // clear Timer1's interrupt flag, otherwise it might
+                       // be retriggered upon leaving the ISR
 }
 
-void    setup_timer(void)
+/* Same as above if you don't want to use __ISR
+ __attribute__((vector(_TIMER_1_VECTOR), interrupt(IPL2AUTO), nomips16))
+ void Timer1Handler(void)
+ {
+    _LATF1 ^= 1;
+    IFS0bits.T1IF = 0; // clear Timer1's interrupt flag, otherwise it might
+                       // be retriggered upon leaving the ISR
+ }
+ */
+
+void setup_timer(void)
 {
-    // The timer shall be enabled
-    T1CONbits.ON = 1;
-    // It is also internal
-    T1CONbits.TCS = 0;
-    // And has a ratio of 1:1
+    // The timer is internal
+    T1CONbits.TCS = 1;
+    // it has a ratio of 1:1
     T1CONbits.TCKPS = 0;
+    // and it shall be enabled
+    T1CONbits.ON = 1;
+    // Set Timer1's period to 65535
+    PR1 = 65535;
 }
 
-void    setup_interrupts(void)
+void setup_interrupts(void)
 {
     INTCON = 0; // completely wipe-out possible residual data
+    INTCONbits.MVEC = 1; // enable multi-vector mode
+    IFS0bits.T1IF = 0; // clear Timer1's interrupt flag ... just in case
+    IPC1bits.T1IP = 2; // Timer1 Interrupt Priority
+    IPC1bits.T1IS = 0; // Timer1 Interrupt Subpriority
     IEC0bits.T1IE = 1; // Timer1 Interrupt Enabled
 }
 
-void    clear_watchdog(void)
+void clear_watchdog(void)
 {
     WDTCONbits.WDTCLR = 1;
 }
 
-int     main(void)
+#include <plib.h>
+
+int main(void)
 {
-    _TRISF1 = 0;
     setup_timer();
     setup_interrupts();
+    asm volatile("ei"); // May also use INTEnableInterrupts() macro
+    _TRISF1 = 0;
     while (1) {
-        clear_watchdog(); // a better alternative would be the ClearWDT() macro
+        // clear_watchdog(); // a better alternative would be the ClearWDT() macro
         // do stuff ...
     }
     return (0);
