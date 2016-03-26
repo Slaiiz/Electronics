@@ -10,9 +10,9 @@
 
 #include "types.h"
 
-void __ISR(_TIMER_1_VECTOR, IPL2AUTO) Timer1Handler(void)
+void __ISR(_TIMER_1_VECTOR, IPL2AUTO) led_blink(void)
 {
-    _LATF1 ^= 1;
+    // _LATF1 ^= 1;
     IFS0bits.T1IF = 0; // clear Timer1's interrupt flag, otherwise it might
                        // be retriggered upon leaving the ISR
 }
@@ -26,6 +26,12 @@ void __ISR(_TIMER_1_VECTOR, IPL2AUTO) Timer1Handler(void)
                        // be retriggered upon leaving the ISR
  }
  */
+
+void __ISR(_EXTERNAL_1_VECTOR, IPL3AUTO) button_read(void)
+{
+    _LATF1 ^= 1;
+    IFS0bits.INT1IF = 0;
+}
 
 void setup_timer(void)
 {
@@ -43,18 +49,21 @@ void setup_interrupts(void)
 {
     INTCON = 0; // completely wipe-out possible residual data
     INTCONbits.MVEC = 1; // enable multi-vector mode
+    // Timer1 ----------------------------------------------------------
     IFS0bits.T1IF = 0; // clear Timer1's interrupt flag ... just in case
     IPC1bits.T1IP = 2; // Timer1 Interrupt Priority
     IPC1bits.T1IS = 0; // Timer1 Interrupt Subpriority
     IEC0bits.T1IE = 1; // Timer1 Interrupt Enabled
+    // Button ----------------------------------------------------------
+    IFS0bits.INT1IF = 0; // why not
+    IPC1bits.INT1IP = 3; // Prioritized over Timer1
+    IEC0bits.INT1IE = 1; // Button interrupt enabled
 }
 
 void clear_watchdog(void)
 {
     WDTCONbits.WDTCLR = 1;
 }
-
-#include <plib.h>
 
 int main(void)
 {
@@ -63,7 +72,7 @@ int main(void)
     asm volatile("ei"); // May also use INTEnableInterrupts() macro
     _TRISF1 = 0;
     while (1) {
-        // clear_watchdog(); // a better alternative would be the ClearWDT() macro
+        clear_watchdog(); // a better alternative would be the ClearWDT() macro
         // do stuff ...
     }
     return (0);

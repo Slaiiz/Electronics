@@ -2,7 +2,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>Interrupts</name>
+            <name>InterruptsBis</name>
             <creation-uuid>92e8711a-9d14-4fd8-bf01-dc285637d5a6</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
