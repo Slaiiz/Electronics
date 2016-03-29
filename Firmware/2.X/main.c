@@ -41,14 +41,14 @@ void    main(void)
     u8  last_bouton;
     u16 pr2;
     u16 min;
-    pr2 = 1980;
+    pr2 = 245;
     min = 122;
 
-    configure_timer_type_b(0b11, pr2);
+    configure_timer_type_b(0b111, pr2);
     TRISFbits.TRISF1 = 0;
     TRISDbits.TRISD8 = 1;
     while (1) {
-        if (TMR2 < PR2 / 2)
+        if (TMR2 < (pr2 / 2))
             LATFbits.LATF1 = 1;
         else
             LATFbits.LATF1 = 0;
@@ -57,7 +57,7 @@ void    main(void)
             pr2 = pr2 / 2;
             if (pr2 < min)
                 pr2 = 1980;
-            configure_timer_type_b(0b11, pr2);
+            configure_timer_type_b(0b111, pr2);
         }
         bouton      = last_bouton;
         last_bouton = PORTDbits.RD8;
