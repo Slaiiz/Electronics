@@ -8,56 +8,56 @@
 #include "p32xxxx.h"
 #include "types.h"
 
-void    configure_timer_type_a(u8 ratio, u32 sec)
+void    configure_timer_type_a(u8 ratio, u32 pr1)
 {
+    T1CON = 0;
     // Enable timer
     T1CONbits.ON = 1;
-    // Timer is external
-    T1CONbits.TCS = 1;
-    // 1:1 clock ratio
+    // ratio 1:256
     T1CONbits.TCKPS = ratio;
-    // sec of timer
-    PR1 = sec;
+    // 32bits mode
+    //T1CONbits.T32 = 1;
+    PR1 = pr1;
+    TMR1 = 0;
 }
 
-void    configure_timer_type_b(u8 ratio, u32 sec)
+void    configure_timer_type_b(u8 ratio, u32 pr2)
 {
+    T2CON = 0;
     // Enable timer
     T2CONbits.ON = 1;
     // ratio 1:256
     T2CONbits.TCKPS = ratio;
     // 32bits mode
     T2CONbits.T32 = 1;
-    // sec of timer
-    PR2 = 1000000;
+    PR2 = pr2;
+    TMR2 = 0;
 }
 
-
 // using timer type B
-
 void    main(void)
 {
-    u16 half_hz;
     u8  bouton;
     u8  last_bouton;
-    u16 sec;
+    u16 pr2;
+    u16 min;
+    pr2 = 245;
+    min = 122;
 
-    sec = 8000000 / 512;
-    configure_timer_type_b(0b000, sec);
-    half_hz = 1;
+    configure_timer_type_b(0b111, pr2);
     TRISFbits.TRISF1 = 0;
     TRISDbits.TRISD8 = 1;
     while (1) {
-        if (TMR2 % (sec / half_hz) < (sec / (half_hz * 2)))
+        if (TMR2 < (pr2 / 2))
             LATFbits.LATF1 = 1;
         else
             LATFbits.LATF1 = 0;
         if (!last_bouton && bouton)
         {
-            if (half_hz <= 8)
-                half_hz *= 2;
-            else
-                half_hz =  1;
+            pr2 = pr2 / 2;
+            if (pr2 < min)
+                pr2 = 1980;
+            configure_timer_type_b(0b111, pr2);
         }
         bouton      = last_bouton;
         last_bouton = PORTDbits.RD8;
@@ -96,5 +96,4 @@ void    main(void)
         bouton      = last_bouton;
         last_bouton = PORTDbits.RD8;
     }
-}
- */
+}*/

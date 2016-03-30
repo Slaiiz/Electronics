@@ -149,6 +149,7 @@
         <property key="wpo-lto" value="false"/>
       </C32Global>
       <ICD3PlatformTool>
+<<<<<<< HEAD
         <property key="ADC 1" value="true"/>
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="CHANGE NOTICE" value="true"/>
@@ -216,6 +217,9 @@
         <property key="programoptions.usehighvoltageonmclr" value="false"/>
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
+=======
+        <property key="firmware.download.all" value="false"/>
+>>>>>>> 4240889580189a3f945354277f8bf5edc378ae15
       </ICD3PlatformTool>
     </conf>
   </confs>

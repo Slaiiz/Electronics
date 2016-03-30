@@ -67,8 +67,6 @@ void clear_watchdog(void)
     WDTCONbits.WDTCLR = 1;
 }
 
-#include <plib.h>
-
 int main(void)
 {
     setup_timer();
