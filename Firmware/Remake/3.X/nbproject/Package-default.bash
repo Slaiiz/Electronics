@@ -10,15 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-<<<<<<< HEAD
 OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/3.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 OUTPUT_BASENAME=3.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 PACKAGE_TOP_DIR=3.x/
-=======
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/3.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=3.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=3/
->>>>>>> 4240889580189a3f945354277f8bf5edc378ae15
 
 # Functions
 function checkReturnCode
@@ -63,25 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-<<<<<<< HEAD
 makeDirectory ${TMPDIR}/3.x/bin
-=======
-makeDirectory ${TMPDIR}/3/bin
->>>>>>> 4240889580189a3f945354277f8bf5edc378ae15
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-<<<<<<< HEAD
 rm -f ${CND_DISTDIR}/${CND_CONF}/package/3.x.tar
 cd ${TMPDIR}
 tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/3.x.tar *
-=======
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/3.tar
-cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/3.tar *
->>>>>>> 4240889580189a3f945354277f8bf5edc378ae15
 checkReturnCode
 
 # Cleanup

@@ -14,8 +14,8 @@
 #pragma config FPLLODIV = DIV_8         // System PLL Output Clock Divider (PLL Divide by 8)
 
 // DEVCFG1
-#pragma config FNOSC = PRI              // Oscillator Selection Bits (Primary Osc (XT,HS,EC))
-#pragma config FSOSCEN = OFF            // Secondary Oscillator Enable (Disabled)
+#pragma config FNOSC = PRIPLL           // Oscillator Selection Bits (Primary Osc w/PLL (XT+,HS+,EC+PLL))
+#pragma config FSOSCEN = ON             // Secondary Oscillator Enable (Enabled)
 #pragma config IESO = ON                // Internal/External Switch Over (Enabled)
 #pragma config POSCMOD = XT             // Primary Oscillator Configuration (XT osc mode)
 #pragma config OSCIOFNC = ON            // CLKO Output Signal Active on the OSCO Pin (Enabled)
