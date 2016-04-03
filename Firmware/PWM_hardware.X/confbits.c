@@ -9,16 +9,16 @@
 // USERID = No Setting
 
 // DEVCFG2
-#pragma config FPLLIDIV = DIV_2        // PLL Input Divider (12x Divider)
+#pragma config FPLLIDIV = DIV_2         // PLL Input Divider (2x Divider)
 #pragma config FPLLMUL = MUL_24         // PLL Multiplier (24x Multiplier)
-#pragma config FPLLODIV = DIV_1       // System PLL Output Clock Divider (PLL Divide by 256)
+#pragma config FPLLODIV = DIV_256       // System PLL Output Clock Divider (PLL Divide by 256)
 
 // DEVCFG1
-#pragma config FNOSC = FRCPLL           // Oscillator Selection Bits (Primary Osc w/PLL (XT+,HS+,EC+PLL))
+#pragma config FNOSC = FRCPLL           // Oscillator Selection Bits (Fast RC Osc with PLL)
 #pragma config FSOSCEN = ON             // Secondary Oscillator Enable (Enabled)
 #pragma config IESO = ON                // Internal/External Switch Over (Enabled)
-#pragma config POSCMOD = XT             // Primary Oscillator Configuration (HS osc mode)
-#pragma config OSCIOFNC = OFF            // CLKO Output Signal Active on the OSCO Pin (Enabled)
+#pragma config POSCMOD = XT             // Primary Oscillator Configuration (XT osc mode)
+#pragma config OSCIOFNC = ON            // CLKO Output Signal Active on the OSCO Pin (Enabled)
 #pragma config FPBDIV = DIV_8           // Peripheral Clock Divisor (Pb_Clk is Sys_Clk/8)
 #pragma config FCKSM = CSDCMD           // Clock Switching and Monitor Selection (Clock Switch Disable, FSCM Disabled)
 #pragma config WDTPS = PS1048576        // Watchdog Timer Postscaler (1:1048576)
@@ -30,5 +30,3 @@
 #pragma config PWP = OFF                // Program Flash Write Protect (Disable)
 #pragma config BWP = OFF                // Boot Flash Write Protect bit (Protection Disabled)
 #pragma config CP = OFF                 // Code Protect (Protection Disabled)
-
-

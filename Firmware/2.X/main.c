@@ -41,8 +41,8 @@ void    main(void)
     u8  last_bouton;
     u16 pr2;
     u16 min;
-    pr2 = 245;
-    min = 122;
+    pr2 = 46875;
+    min = 5859;
 
     configure_timer_type_b(0b111, pr2);
     TRISFbits.TRISF1 = 0;
