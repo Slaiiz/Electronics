@@ -7,15 +7,15 @@
 
 #include "libneopixels.h"
 
-unsigned int _leds[60];
-unsigned int *_latch;
-unsigned int _pin;
+unsigned int     _leds[2];
+unsigned int     *_latch;
+unsigned char    _pin;
 
 /*
  * Example : neopixels_init(&LATF, 1);
  */
 
-void    neopixels_init(volatile unsigned int *latch, unsigned int pin)
+void    neopixels_init(volatile unsigned int *latch, unsigned char pin)
 {
     _latch = (unsigned int*)latch;
     _pin = pin;

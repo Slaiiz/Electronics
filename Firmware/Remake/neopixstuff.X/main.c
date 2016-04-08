@@ -12,8 +12,8 @@ void main(void)
 {
     TRISBCLR = 1;
     neopixels_init(&LATB, 0);
+
     neopixels_set(0, 255, 0, 0);
-    neopixels_show();
-    neopixels_set(0, 0, 255, 0);
-    neopixels_show();
+    while (1)
+        neopixels_show();
 }

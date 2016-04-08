@@ -16,8 +16,8 @@ typedef enum {
     BRG
 } format;
 
-void    neopixels_init(volatile unsigned int *latch, unsigned int pin);
-void    neopixels_set(int led, char r, char g, char b);
+void    neopixels_init(volatile unsigned int *latch, unsigned char pin);
+void    neopixels_set(char led, char r, char g, char b);
 void    neopixels_show(void);
 
 #endif	/* LIBNEOPIXELS_H */
