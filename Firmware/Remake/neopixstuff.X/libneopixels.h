@@ -8,7 +8,7 @@
 #ifndef LIBNEOPIXELS_H
 #define	LIBNEOPIXELS_H
 
-#define F_CPU  8000000
+#define F_CPU 16000000
 
 typedef enum {
     RGB,
