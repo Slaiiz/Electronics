@@ -7,11 +7,7 @@
 
 #include "libneopixels.h"
 
-extern unsigned int     _leds[2];
-extern unsigned int     *_latch;
-extern unsigned char    _pin;
-
-void    neopixels_set(char led, char r, char g, char b)
+void    neopixels_set(char led, unsigned char r, unsigned char g, unsigned char b)
 {
-    _leds[led] = (r << 0) + (g << 8) + (b << 16);
+    _leds[led] = (g << 0) | (r << 8) | (b << 16);
 }

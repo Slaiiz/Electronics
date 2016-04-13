@@ -8,10 +8,6 @@
 #include <xc.h>
 #include "libneopixels.h"
 
-extern unsigned int     _leds[2];
-extern unsigned int     *_latch;
-extern unsigned char    _pin;
-
 /*
  * Considering a 8MHz MIPS microprocessor ...
  * Clock budget for 0 code: 10 IPS
@@ -23,38 +19,68 @@ extern unsigned char    _pin;
 
 /*
  * TODO:
- * - Add proper configuration bits
- * - Fix NOPs
+ * - Fix timings
  */
 
 void    neopixels_show(void)
 {
-//    asm volatile("\n"
-//    "   .set    noreorder       \n"
-//    "   lw      $t1, %[pin]     \n"
-//    "   li      $t0, 1          \n"
-//    "   sllv    $t1, $t0, $t1   \n"
-//    "   lw      $t3, %[port]    \n"
-//    "   la      $t0, %[leds]    \n"
-//    "   li      $t2, 2          \n"
-//    "0:                         \n"
-//    "   lw      $t5, 0($t0)     \n"
-//    "   addiu   $t0, $t0, 4     \n"
-//    "   li      $t4, 24         \n"
-//    "1:                         \n"
-//    "   sw      $t3, %[port]    \n"
-//    "   andi    $t6, $t5, 1     \n"
-//    "   srl     $t5, $t5, 1     \n"
-//    "   or      $t3, $t3, $t1   \n"
-//    "   sw      $t3, %[port]    \n"
-//    "   xor     $t3, $t3, $t1   \n"
-//    "   beql    $t6, $zero, .+8 \n"
-//    "   sw      $t3, %[port]    \n"
-//    "   bne     $t4, $zero, 1b  \n"
-//    "   nop                     \n"
-//    "   addiu   $t2, $t2, -1    \n"
-//    "   bne     $t2, $zero, 0b  \n"
-//    "   nop                     \n"
+    asm volatile(               "\n"
+    "   .set    noreorder"      "\n"
+    "   li      $t0,1"          "\n"
+    "   sllv    $t0,$t0,%3"     "\n"
+    "   move    %3,$t0"         "\n"
+    "   b       2f"             "\n"
+    "   lh      $t1,%0"         "\n"
+    "0:"                        "\n"
+    "   lw      $t2,0(%2)"      "\n"
+    "   addiu   %2,%2,4"        "\n"
+    "   li      $t0,24"         "\n"
+    "1:"                        "\n"
+    "   or      $t1,$t1,%3"     "\n"
+    "   sh      $t1,%0"         "\n"
+    "   xor     $t1,$t1,%3"     "\n"
+    "   andi    $t3,$t2,1"      "\n"
+    "   beqzl   $t3,.+4"        "\n"
+    "   sh      $t1,%0"         "\n"
+    "   sh      $t1,%0"         "\n"
+    "   addiu   $t0,$t0,-1"     "\n"
+    "   bnez    $t0,1b"         "\n"
+    "   srl     $t2,$t2,1"      "\n"
+    "2:"                        "\n"
+    "   bnez    %1,0b"          "\n"
+    "   addiu   %1,%1,-1"       "\n"
+    : "=m" (*_latch)
+    : "r"  (_nleds),
+      "r" (_leds),
+      "r"  (_pin)
+    : "t0","t1","t2","t3"
+    );
+//    asm volatile(                "\n"
+//    "   .set    noreorder"       "\n"
+//    "   lw      $t1, %[pin]"     "\n"
+//    "   li      $t0, 1"          "\n"
+//    "   sllv    $t1, $t0, $t1"   "\n"
+//    "   lw      $t3, %[port]"    "\n"
+//    "   la      $t0, %[leds]"    "\n"
+//    "   li      $t2, 2"          "\n"
+//    "0:"                         "\n"
+//    "   lw      $t5, 0($t0)"     "\n"
+//    "   addiu   $t0, $t0, 4"     "\n"
+//    "   li      $t4, 24"         "\n"
+//    "1:"                         "\n"
+//    "   sw      $t3, %[port]"    "\n"
+//    "   andi    $t6, $t5, 1"     "\n"
+//    "   srl     $t5, $t5, 1"     "\n"
+//    "   or      $t3, $t3, $t1"   "\n"
+//    "   sw      $t3, %[port]"    "\n"
+//    "   xor     $t3, $t3, $t1"   "\n"
+//    "   beql    $t6, $zero, .+8" "\n"
+//    "   sw      $t3, %[port]"    "\n"
+//    "   bne     $t4, $zero, 1b"  "\n"
+//    "   nop"                     "\n"
+//    "   addiu   $t2, $t2, -1"    "\n"
+//    "   bne     $t2, $zero, 0b"  "\n"
+//    "   nop"                     "\n"
 //    :: [port] "o" (*_latch),
 //       [leds] "i" (_leds),
 //       [pin]  "m" (_pin));
