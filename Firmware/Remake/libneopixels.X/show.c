@@ -5,7 +5,14 @@
  * Created on April 7, 2016, 12:54 PM
  */
 
-#include <xc.h>
+/*
+ * Notice:
+ * 
+ * This library was designed for the PIC32MX340FH microcontroller for a
+ * clock freqency of 8MHz. Its successful use on other devices is not
+ * guaranteed.
+ */
+
 #include "libneopixels.h"
 
 /*
@@ -55,55 +62,4 @@ void    neopixels_show(void)
       "r"  (_pin)
     : "t0","t1","t2","t3"
     );
-//    asm volatile(                "\n"
-//    "   .set    noreorder"       "\n"
-//    "   lw      $t1, %[pin]"     "\n"
-//    "   li      $t0, 1"          "\n"
-//    "   sllv    $t1, $t0, $t1"   "\n"
-//    "   lw      $t3, %[port]"    "\n"
-//    "   la      $t0, %[leds]"    "\n"
-//    "   li      $t2, 2"          "\n"
-//    "0:"                         "\n"
-//    "   lw      $t5, 0($t0)"     "\n"
-//    "   addiu   $t0, $t0, 4"     "\n"
-//    "   li      $t4, 24"         "\n"
-//    "1:"                         "\n"
-//    "   sw      $t3, %[port]"    "\n"
-//    "   andi    $t6, $t5, 1"     "\n"
-//    "   srl     $t5, $t5, 1"     "\n"
-//    "   or      $t3, $t3, $t1"   "\n"
-//    "   sw      $t3, %[port]"    "\n"
-//    "   xor     $t3, $t3, $t1"   "\n"
-//    "   beql    $t6, $zero, .+8" "\n"
-//    "   sw      $t3, %[port]"    "\n"
-//    "   bne     $t4, $zero, 1b"  "\n"
-//    "   nop"                     "\n"
-//    "   addiu   $t2, $t2, -1"    "\n"
-//    "   bne     $t2, $zero, 0b"  "\n"
-//    "   nop"                     "\n"
-//    :: [port] "o" (*_latch),
-//       [leds] "i" (_leds),
-//       [pin]  "m" (_pin));
-//    asm volatile(              "\n" // This pulses HIGH for 1us, LOW for 2us
-//    "   .set    noreorder"     "\n" // Freqency is 16MHz, Port is RB5
-//    "   lw      $t0, %0"       "\n"
-//    "0:"                       "\n"
-//    "   or      $t0, $t0, %1"  "\n"
-//    "   sw      $t0, %0"       "\n"
-//    "   xor     $t0, $t0, %1"  "\n"
-//    "   sw      $t0, %0"       "\n"
-//    "   b       0b"            "\n"
-//    "   nop"                   "\n"
-//    : "=m" (*_latch)
-//    : "r"  (1 << _pin)
-//    : "t0"
-//    );
-//    asm volatile(              "\n" // This pulses HIGH for 1us, LOW for 1us
-//    "   .set    noreorder"     "\n" // Freqency is 16MHz, Port is RB5
-//    "0:"                       "\n"
-//    "   b       0b"            "\n"
-//    "   sw      %1, %0"        "\n"
-//    : "=m" (LATBINV)
-//    : "r"  (1 << _pin)
-//    );
 }
