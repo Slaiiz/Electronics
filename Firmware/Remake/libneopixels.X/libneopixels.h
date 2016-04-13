@@ -18,7 +18,7 @@ void    neopixels_init(volatile unsigned int *port, char pin, long numleds);
 void    neopixels_set(char led, unsigned char r, unsigned char g, unsigned char b);
 void    neopixels_show(void);
 
-extern long _leds[8];
+extern long _leds[60];
 extern int  *_latch;
 extern long _nleds;
 extern char _pin;

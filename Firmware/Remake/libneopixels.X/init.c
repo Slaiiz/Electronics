@@ -15,7 +15,7 @@
 
 #include "libneopixels.h"
 
-long    _leds[8];
+long    _leds[60];
 int     *_latch;
 long    _nleds;
 char    _pin;

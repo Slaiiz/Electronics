@@ -8,7 +8,7 @@
 /*
  * Notice:
  * 
- * This library was designed for the PIC32MX340FH microcontroller for a
+ * This library was designed for the PIC32MX340F512H microcontroller for a
  * clock freqency of 8MHz. Its successful use on other devices is not
  * guaranteed.
  */
@@ -22,11 +22,6 @@
  * T0H = 0.4us, T0L = 0.85us
  * T1H = 0.8US, T1L = 0.45us
  * RES = 50us+
- */
-
-/*
- * TODO:
- * - Fix timings
  */
 
 void    neopixels_show(void)
@@ -44,13 +39,13 @@ void    neopixels_show(void)
     "   li      $t0,24"         "\n"
     "1:"                        "\n"
     "   or      $t1,$t1,%3"     "\n"
+    "   andi    $t3,$t2,1"      "\n"
     "   sh      $t1,%0"         "\n"
     "   xor     $t1,$t1,%3"     "\n"
-    "   andi    $t3,$t2,1"      "\n"
-    "   beqzl   $t3,.+4"        "\n"
-    "   sh      $t1,%0"         "\n"
+    "   beqzl   $t3,.+8"        "\n"
     "   sh      $t1,%0"         "\n"
     "   addiu   $t0,$t0,-1"     "\n"
+    "   sh      $t1,%0"         "\n"
     "   bnez    $t0,1b"         "\n"
     "   srl     $t2,$t2,1"      "\n"
     "2:"                        "\n"
