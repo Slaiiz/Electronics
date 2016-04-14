@@ -37,14 +37,14 @@ void    __attribute__((vector(_TIMER_2_VECTOR),interrupt(IPL1AUTO)))
             for (i = 0; i < 60; i += 5)
                 neopixels_set(i, 20, 20, 0);
             // Hours
-            neopixels_set((60 * hours / 12 + minutes / 12) % 60, 255, 0, 0);
+            neopixels_set((60 * hours / 12 + minutes / 12), 255, 0, 0);
             neopixels_set((60 * hours / 12 - 1 + minutes / 12) % 60, 30, 0, 0);
             neopixels_set((60 * hours / 12 + 1 + minutes / 12) % 60, 30, 0, 0);
             // Minutes
             neopixels_set((60 * minutes / 60 + 1) % 60, 0, 255 * seconds / 60, 0);
-            neopixels_set((60 * minutes / 60) % 60, 0, 255 - (255 * seconds / 60), 0);
+            neopixels_set((60 * minutes / 60), 0, 255 - (255 * seconds / 60), 0);
             // Seconds
-            neopixels_set((60 * seconds / 60) % 60, 0, 0, 255);
+            neopixels_set((60 * seconds / 60), 0, 0, 255);
             neopixels_show();
             seconds = (seconds + 1) % 60;
             if (!seconds) {
@@ -54,6 +54,29 @@ void    __attribute__((vector(_TIMER_2_VECTOR),interrupt(IPL1AUTO)))
                 }
             }
             break ;
+        case 2:
+            for (pixel = 0; pixel < 60; pixel++) {
+                neopixels_set(pixel, 0, 255 * (pixel + i) / 60, 0);
+            }
+            neopixels_show();
+            i = (i + 1) % 60;
+            break ;
+        case 3:
+            for (pixel = 0; pixel < 60; pixel++) {
+                neopixels_set(pixel, seconds, seconds, seconds);
+            }
+            seconds = (seconds + 1) % 255;
+            neopixels_show();
+            break ;
+        case 4:
+            i = 1;
+            for (pixel = 0; pixel < 8; pixel++) {
+                neopixels_set(pixel, ((seconds & i) && 1) * 255, 0, 0);
+                i <<= 1;
+            }
+            seconds = (seconds + 1) & 255;
+            neopixels_show();
+            break ;
     }
     IFS0bits.T2IF = 0;
 }
@@ -62,7 +85,7 @@ void    __attribute__((vector(_EXTERNAL_1_VECTOR),interrupt(IPL2AUTO)))
         button_press(void)
 {
     neopixels_clear();
-    mode = (mode + 1) % 2;
+    mode = (mode + 1) % 5;
     IFS0bits.INT1IF = 0;
 }
 
