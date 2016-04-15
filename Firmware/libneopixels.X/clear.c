@@ -9,7 +9,7 @@
  * Notice:
  *
  * This library was designed for the PIC32MX340F512H microcontroller for a
- * clock freqency of 8MHz. Its successful use on other devices is not
+ * clock frequency of 8MHz. Its successful use on other devices is not
  * guaranteed.
  */
 
@@ -22,6 +22,5 @@ void    neopixels_clear(void)
     nleds = _nleds;
     while (nleds)
         neopixels_set(--nleds, 0, 0, 0);
-    neopixels_show();
 }
 
