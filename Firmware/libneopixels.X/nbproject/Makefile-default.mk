@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=show.c init.c set.c clear.c
+SOURCEFILES_QUOTED_IF_SPACED=show.c set.c clear.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/show.o ${OBJECTDIR}/init.o ${OBJECTDIR}/set.o ${OBJECTDIR}/clear.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/show.o.d ${OBJECTDIR}/init.o.d ${OBJECTDIR}/set.o.d ${OBJECTDIR}/clear.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/show.o ${OBJECTDIR}/set.o ${OBJECTDIR}/clear.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/show.o.d ${OBJECTDIR}/set.o.d ${OBJECTDIR}/clear.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/show.o ${OBJECTDIR}/init.o ${OBJECTDIR}/set.o ${OBJECTDIR}/clear.o
+OBJECTFILES=${OBJECTDIR}/show.o ${OBJECTDIR}/set.o ${OBJECTDIR}/clear.o
 
 # Source Files
-SOURCEFILES=show.c init.c set.c clear.c
+SOURCEFILES=show.c set.c clear.c
 
 
 CFLAGS=
@@ -100,12 +100,6 @@ ${OBJECTDIR}/show.o: show.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/show.o 
 	@${FIXDEPS} "${OBJECTDIR}/show.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/show.o.d" -o ${OBJECTDIR}/show.o show.c   
 	
-${OBJECTDIR}/init.o: init.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/init.o.d 
-	@${RM} ${OBJECTDIR}/init.o 
-	@${FIXDEPS} "${OBJECTDIR}/init.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/init.o.d" -o ${OBJECTDIR}/init.o init.c   
-	
 ${OBJECTDIR}/set.o: set.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/set.o.d 
@@ -124,12 +118,6 @@ ${OBJECTDIR}/show.o: show.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/show.o.d 
 	@${RM} ${OBJECTDIR}/show.o 
 	@${FIXDEPS} "${OBJECTDIR}/show.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/show.o.d" -o ${OBJECTDIR}/show.o show.c   
-	
-${OBJECTDIR}/init.o: init.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/init.o.d 
-	@${RM} ${OBJECTDIR}/init.o 
-	@${FIXDEPS} "${OBJECTDIR}/init.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/init.o.d" -o ${OBJECTDIR}/init.o init.c   
 	
 ${OBJECTDIR}/set.o: set.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 

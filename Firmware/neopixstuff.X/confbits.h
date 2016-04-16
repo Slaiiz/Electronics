@@ -11,6 +11,7 @@
 #include <xc.h>
 
 #define F_CPU   8000000L
+#define F_PB    F_CPU / 8
 
 // DEVCFG2
 #pragma config FPLLIDIV = DIV_2         // PLL Input Divider (2x Divider)

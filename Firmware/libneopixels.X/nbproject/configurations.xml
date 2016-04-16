@@ -14,7 +14,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>show.c</itemPath>
-      <itemPath>init.c</itemPath>
       <itemPath>set.c</itemPath>
       <itemPath>clear.c</itemPath>
     </logicalFolder>

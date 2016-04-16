@@ -5,27 +5,9 @@
  * Created on April 7, 2016, 4:29 PM
  */
 
-#include <xc.h>
-#include <plib.h>
-#include "confbits.h"
-#include "libneopixels.h"
+#include "rainbowclock.h"
 
-static long mode = 1;
-
-unsigned int bcd_to_dec(unsigned long n)
-{
-    unsigned long   out;
-    unsigned int    i;
-
-    i = 1;
-    out = 0;
-    while (n) {
-        out += (n & 15) * i;
-        n >>= 4;
-        i *= 10;
-    }
-    return (out);
-}
+static long mode = 0;
 
 void __attribute__((vector(_TIMER_1_VECTOR),interrupt(IPL1AUTO)))
      timer_tick(void)
@@ -95,36 +77,42 @@ void __attribute__((vector(_TIMER_1_VECTOR),interrupt(IPL1AUTO)))
             seconds = (seconds + 1);
             neopixels_show();
             break ;
+        case 5:
+            for (pixel = 0; pixel < 60; pixel++) {
+                i = 255 * pixel / 60;
+                neopixels_set(pixel, i, 255 - i, 0);
+            }
+            neopixels_show();
     }
     IFS0bits.T1IF = 0;
 }
 
-void __attribute__((vector(_EXTERNAL_1_VECTOR),interrupt(IPL2AUTO)))
+void __attribute__((vector(_EXTERNAL_0_VECTOR),interrupt(IPL2AUTO)))
      button_press(void)
 {
     neopixels_clear();
-    mode = (mode + 1) % 5;
-    IFS0bits.INT1IF = 0;
+    mode = (mode + 1) % 6;
+    IFS0bits.INT0IF = 0;
 }
 
 void setup_callbacks(void)
 {
     TMR1 = 0;
-    PR1 = 32768;
+    PR1 = 32768 / 10;
     T1CONbits.TCKPS = 0;
     T1CONbits.TCS   = 1;
     T1CONbits.ON    = 1;
     INTCONbits.MVEC = 1;
     // Timer1
-    IFS0bits.T1IF = 0;
-    IPC1bits.T1IP = 1;
-    IPC1bits.T1IS = 0;
-    IEC0bits.T1IE = 1;
+    IFS0bits.T1IF   = 0;
+    IPC1bits.T1IP   = 1;
+    IPC1bits.T1IS   = 0;
+    IEC0bits.T1IE   = 1;
     // Button
-    IFS0bits.INT1IF = 0;
-    IPC1bits.INT1IP = 2;
-    IPC1bits.INT1IS = 0;
-    IEC0bits.INT1IE = 1;
+    IFS0bits.INT0IF = 0;
+    IPC0bits.INT0IP = 2;
+    IPC0bits.INT0IS = 0;
+    IEC0bits.INT0IE = 1;
     asm volatile("ei");
 }
 
@@ -140,13 +128,19 @@ void configure_realtime_clock(void)
     RtccWrEnable(0);
 }
 
+void configure_ports(void)
+{
+    TRISBbits.TRISB0   = 0;
+    TRISFbits.TRISF6   = 1;
+}
+
 void main(void)
 {
     SYSTEMConfigPerformance(8000000);
-    TRISBbits.TRISB0 = 0;
+    configure_ports();
+    configure_i2c(100000);
     configure_realtime_clock();
-    neopixels_init(&LATB, 0, 60);
-    neopixels_clear();
+    neopixels_begin(&LATB, 0, 60);
     setup_callbacks();
     while (1);
 }

@@ -1,5 +1,5 @@
 /*
- * File:   init.c
+ * File:   begin.c
  * Author: vchesnea
  *
  * Created on April 7, 2016, 12:54 PM
@@ -21,10 +21,10 @@ long    _nleds;
 char    _pin;
 
 /*
- * Example : neopixels_init(&LATF, 1);
+ * Example : neopixels_begin(&LATF, 1, 60);
  */
 
-void    neopixels_init(volatile unsigned int *port, char pin, long numleds)
+void    neopixels_begin(volatile unsigned int *port, char pin, long numleds)
 {
     _latch = (int*)port;
     _nleds = numleds;

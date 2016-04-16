@@ -17,5 +17,5 @@
 
 void    neopixels_set(char led, unsigned char r, unsigned char g, unsigned char b)
 {
-    _leds[led] = (b << 8) | (r << 16) | (g << 24);
+    _leds[led] = (b << 8) | (r << 16) | ((g / 3) << 24);
 }
