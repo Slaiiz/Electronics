@@ -24,4 +24,4 @@ extern int  *_latch;
 extern long _nleds;
 extern char _pin;
 
-#endif	/* LIBNEOPIXELS_H */
+#endif

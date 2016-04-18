@@ -8,15 +8,11 @@
 #ifndef RAINBOWCLOCK_H
 #define	RAINBOWCLOCK_H
 
+#include <xc.h>
 #include <plib.h>
 #include "confbits.h"
 #include "libneopixels.h"
 
-#warning LOL
-
 #define BME280_ADDRESS  0x77
-
-unsigned long   bcd_to_dec(unsigned long n);
-void            configure_i2c(unsigned int mode);
 
 #endif

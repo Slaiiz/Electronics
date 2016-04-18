@@ -8,8 +8,6 @@
 #ifndef CONFBITS_H
 #define CONFBITS_H
 
-#include <xc.h>
-
 #define F_CPU   8000000L
 #define F_PB    F_CPU / 8
 
