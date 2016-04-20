@@ -136,16 +136,25 @@ void configure_ports(void)
 
 void configure_i2c(unsigned int mode)
 {
-    I2C1BRG = F_PB / (2 * mode) - 2;
-    I2C1CONbits.STRICT = 1;
+    I2C1CONbits.STRICT = 0;
     I2C1CONbits.ON     = 1;
     I2C1CONbits.PEN    = 1;
     I2C1CONbits.RCEN   = 1;
+    I2C1MSK = 0b0000000001;
+    I2C1BRG = F_PB / (2 * mode) - 2;
 }
 
-long read_i2c(void)
+void i2c_send(void)
 {
-    I2C1CONbits.SEN    = 1;
+    I2C1ADD = BME280_ADDRESS & ~1;
+    I2C1CONbits.SEN = 1;
+    I2C1TRN = 0xFA;
+    while (I2C1STATbits.ACKSTAT);
+    I2C1ADD = BME280_ADDRESS | 1;
+    I2C1CONbits.SEN = 1;
+    I2C1TRN = 0xFC;
+    while (I2C1STATbits.ACKSTAT);
+    I2C1CONbits.RCEN = 1;
 }
 
 void __attribute__((vector(_I2C1_VECTOR),interrupt(IPL3AUTO)))

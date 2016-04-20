@@ -13,6 +13,6 @@
 #include "confbits.h"
 #include "libneopixels.h"
 
-#define BME280_ADDRESS  0x77
+#define BME280_ADDRESS  0x76
 
 #endif
