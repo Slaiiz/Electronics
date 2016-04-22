@@ -134,27 +134,22 @@ void configure_ports(void)
     TRISFbits.TRISF6   = 1;
 }
 
-void configure_i2c(unsigned int mode)
-{
-    I2C1CONbits.STRICT = 0;
-    I2C1CONbits.ON     = 1;
-    I2C1CONbits.PEN    = 1;
-    I2C1CONbits.RCEN   = 1;
-    I2C1MSK = 0b0000000001;
-    I2C1BRG = F_PB / (2 * mode) - 2;
-}
-
 void i2c_send(void)
 {
-    I2C1ADD = BME280_ADDRESS & ~1;
-    I2C1CONbits.SEN = 1;
-    I2C1TRN = 0xFA;
-    while (I2C1STATbits.ACKSTAT);
-    I2C1ADD = BME280_ADDRESS | 1;
-    I2C1CONbits.SEN = 1;
-    I2C1TRN = 0xFC;
-    while (I2C1STATbits.ACKSTAT);
-    I2C1CONbits.RCEN = 1;
+    I2CEnable(1, TRUE);
+    I2CSetFrequency(1, F_PB, 100000);
+    I2CStart(1);
+    I2CSendByte(1, (BME280_ADDRESS << 1) | 0);
+    while (!I2CTransmissionHasCompleted(1));
+    while (!I2CByteWasAcknowledged(1));
+    I2CSendByte(1, 0xFC);
+    while (!I2CTransmissionHasCompleted(1));
+    while (!I2CByteWasAcknowledged(1));
+    I2CRepeatStart(1);
+    I2CSendByte(1, (BME280_ADDRESS << 1) | 1);
+    while (!I2CTransmissionHasCompleted(1));
+    while (!I2CByteWasAcknowledged(1));
+    I2CReceiverEnable(1, TRUE);
 }
 
 void __attribute__((vector(_I2C1_VECTOR),interrupt(IPL3AUTO)))
@@ -167,9 +162,9 @@ void main(void)
 {
     SYSTEMConfigPerformance(8000000);
     configure_ports();
-    configure_i2c(100000);
     configure_realtime_clock();
     neopixels_begin(&LATB, 0, 60);
     setup_callbacks();
+    i2c_send();
     while (1);
 }
