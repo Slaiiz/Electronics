@@ -8,6 +8,7 @@
 #include "rainbowclock.h"
 
 static long mode = 0;
+static long temp = 0;
 
 void __attribute__((vector(_TIMER_1_VECTOR),interrupt(IPL1AUTO)))
      timer_tick(void)
@@ -136,26 +137,27 @@ void configure_ports(void)
 
 void i2c_send(void)
 {
-    I2CEnable(1, TRUE);
     I2CSetFrequency(1, F_PB, 100000);
+    I2CEnable(1, TRUE);
+    while (!I2CBusIsIdle(1));
     I2CStart(1);
+    while (!(I2CGetStatus(1) & I2C_START));
+    while (!I2CTransmitterIsReady(1));
     I2CSendByte(1, (BME280_ADDRESS << 1) | 0);
     while (!I2CTransmissionHasCompleted(1));
     while (!I2CByteWasAcknowledged(1));
-    I2CSendByte(1, 0xFC);
+    while (!I2CTransmitterIsReady(1));
+    I2CSendByte(1, 0x7C);
     while (!I2CTransmissionHasCompleted(1));
-    while (!I2CByteWasAcknowledged(1));
     I2CRepeatStart(1);
+    while (!(I2CGetStatus(1) & I2C_START));
+    while (!I2CTransmitterIsReady(1));
     I2CSendByte(1, (BME280_ADDRESS << 1) | 1);
     while (!I2CTransmissionHasCompleted(1));
-    while (!I2CByteWasAcknowledged(1));
-    I2CReceiverEnable(1, TRUE);
-}
-
-void __attribute__((vector(_I2C1_VECTOR),interrupt(IPL3AUTO)))
-     i2c_callback(void)
-{
-    return ;
+    I2CReceiverEnable(1, 1);
+    while (!I2CReceivedDataIsAvailable(1));
+    temp = I2C1RCV;
+    I2CStop(1);
 }
 
 void main(void)
