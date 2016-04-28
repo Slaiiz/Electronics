@@ -11,5 +11,5 @@ void    _libi2c_start(I2C_MODULE id)
 {
     while (!I2CBusIsIdle(id));
     while (I2CStart(id) == I2C_MASTER_BUS_COLLISION)
-        i2cBase[id][5] = 400;
+        I2CStop(id);
 }

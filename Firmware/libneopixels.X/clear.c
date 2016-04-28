@@ -15,12 +15,12 @@
 
 #include "libneopixels.h"
 
-void    neopixels_clear(void)
+void    libneopixels_clear(void)
 {
-    long    nleds;
+    UINT32  nleds;
 
     nleds = _nleds;
     while (nleds)
-        neopixels_set(--nleds, 0, 0, 0);
+        libneopixels_set(--nleds, 0, 0, 0);
 }
 

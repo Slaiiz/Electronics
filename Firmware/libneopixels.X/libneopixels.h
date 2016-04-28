@@ -8,20 +8,22 @@
 #ifndef LIBNEOPIXELS_H
 #define	LIBNEOPIXELS_H
 
+#include <GenericTypeDefs.h>
+
 typedef enum {
     RGB,
     GBR,
     BRG
 } format;
 
-void    neopixels_begin(volatile unsigned int *port, char pin, long numleds);
-void    neopixels_set(char led, unsigned char r, unsigned char g, unsigned char b);
-void    neopixels_clear(void);
-void    neopixels_show(void);
+void    libneopixels_begin(volatile UINT8* port, UINT8 pin, UINT32 numleds);
+void    libneopixels_set(UINT8 led, UINT8 r, UINT8 g, UINT8 b);
+void    libneopixels_clear(void);
+void    libneopixels_show(void);
 
-extern long _leds[60];
-extern int  *_latch;
-extern long _nleds;
-extern char _pin;
+extern UINT8    _leds[60];
+extern UINT32*  _latch;
+extern UINT32   _nleds;
+extern UINT8    _pin;
 
 #endif

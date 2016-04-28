@@ -14,6 +14,7 @@ I2C_RESULT  _libi2c_send(I2C_MODULE id, UINT32 byte)
     while (!I2CTransmitterIsReady(id));
     if ((error = I2CSendByte(id, byte)) != I2C_SUCCESS)
         return (error);
+    while (!I2CTransmissionHasCompleted(id));
     if (!I2CByteWasAcknowledged(id))
         return (I2C_ERROR);
     return (I2C_SUCCESS);

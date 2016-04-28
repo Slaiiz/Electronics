@@ -7,27 +7,39 @@
 
 #include "libi2c.h"
 
-UINT32  libi2c_write(I2C_MODULE id, UINT8 addr, UINT8* data, UINT32 n)
+/*
+ * libi2c_write:
+ * Send a complete write request to a given I2C slave module.
+ * The request shall be encoded in an array of UINT8 pointed at by 'data'
+ * according to the specifications of your slave module, with 'n' indicating
+ * the size in bytes of your request.
+ */
+
+I2C_RESULT  libi2c_write(I2C_MODULE id, UINT8 addr, UINT8* data, UINT32 n)
 {
     I2C_RESULT  error;
+    UINT8       *copy;
 
-    do {
+    copy = data;
+    while (1) {
         _libi2c_start(id);
         if ((error = _libi2c_send(id, (addr << 1) | 0)) != I2C_SUCCESS) {
-            if (error == I2C_MASTER_BUS_COLLISION) {
-                _libi2c_stop(id);
+            _libi2c_stop(id);
+            if (error == I2C_MASTER_BUS_COLLISION)
                 continue ;
+            return (I2C_ERROR);
+        }
+        while (n--) {
+            if ((error = _libi2c_send(id, *data++)) != I2C_SUCCESS) {
+                _libi2c_stop(id);
+                if (error == I2C_MASTER_BUS_COLLISION)
+                    break ;
+                return (I2C_ERROR);
             }
         }
-        while (n--)
-            if ((error = _libi2c_send(id, *data++)) != I2C_SUCCESS)
-                break ;
-        if (error == I2C_MASTER_BUS_COLLISION) {
-            _libi2c_stop(id);
+        if (error == I2C_MASTER_BUS_COLLISION)
             continue ;
-        }
-        while (!I2CTransmissionHasCompleted(id));
         _libi2c_stop(id);
-        return (0);
-    } while (1);
+        return (I2C_SUCCESS);
+    }
 }

@@ -10,6 +10,8 @@
 
 #include <xc.h>
 #include <plib.h>
+#include <GenericTypeDefs.h>
+#include "libi2c.h"
 #include "confbits.h"
 #include "libneopixels.h"
 

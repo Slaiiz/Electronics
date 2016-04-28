@@ -8,6 +8,7 @@
 #ifndef LIBI2C_H
 #define	LIBI2C_H
 
+#include <GenericTypeDefs.h>
 #include <peripheral/i2c.h>
 
 typedef enum {
@@ -16,13 +17,11 @@ typedef enum {
     HIGHSPEED = 1000000
 } e_mode;
 
-extern UINT32** i2cBase;
-
 void        libi2c_enable(I2C_MODULE id, e_mode mode);
 void        libi2c_disable(I2C_MODULE id);
 
-UINT32      libi2c_write(I2C_MODULE id, UINT8 addr, UINT8* data, UINT32 n);
-UINT32      libi2c_read(I2C_MODULE id, UINT8 addr, UINT8* data, UINT32 n);
+I2C_RESULT  libi2c_write(I2C_MODULE id, UINT8 addr, UINT8* data, UINT32 n);
+I2C_RESULT  libi2c_read(I2C_MODULE id, UINT8 addr, UINT8 reg, UINT8* data);
 
 void        _libi2c_start(I2C_MODULE id);
 void        _libi2c_stop(I2C_MODULE id);

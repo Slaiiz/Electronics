@@ -7,83 +7,98 @@
 
 #include "rainbowclock.h"
 
-static long mode = 0;
-static long temp = 0;
+UINT32 static   mode = 0;
+UINT32 static   temp = 0;
+
+UINT32 bcd_to_dec(UINT32 n)
+{
+    UINT32   out;
+    UINT32    i;
+
+    i = 1;
+    out = 0;
+    while (n) {
+        out += (n & 15) * i;
+        n >>= 4;
+        i *= 10;
+    }
+    return (out);
+}
 
 void __attribute__((vector(_TIMER_1_VECTOR),interrupt(IPL1AUTO)))
-     timer_tick(void)
+      timer_tick(void)
 {
-    unsigned int            seconds;
-    unsigned int            minutes;
-    unsigned int            hours;
-    static char             pixel;
-    int                     i;
+    UINT32          seconds;
+    UINT32          minutes;
+    UINT32          hours;
+    UINT8 static    pixel;
+    UINT32          i;
 
     switch (mode) {
         case 0:
-            neopixels_set(pixel + 0, 0, 0, 0);
-            neopixels_set((pixel + 1) % 60, 28, 0, 0);
-            neopixels_set((pixel + 2) % 60, 0, 90, 0);
-            neopixels_set((pixel + 3) % 60, 0, 0, 28);
-            neopixels_set((pixel + 4) % 60, 0, 0, 0);
+            libneopixels_set(pixel + 0, 0, 0, 0);
+            libneopixels_set((pixel + 1) % 60, 28, 0, 0);
+            libneopixels_set((pixel + 2) % 60, 0, 90, 0);
+            libneopixels_set((pixel + 3) % 60, 0, 0, 28);
+            libneopixels_set((pixel + 4) % 60, 0, 0, 0);
             pixel = (pixel + 1) % 60;
-            neopixels_show();
+            libneopixels_show();
             break ;
         case 1:
             seconds = bcd_to_dec((RTCTIME & 0x0000FF00) >> 8);
             minutes = bcd_to_dec((RTCTIME & 0x00FF0000) >> 16);
             hours   = bcd_to_dec((RTCTIME & 0xFF000000) >> 24);
-            neopixels_clear();
+            libneopixels_clear();
             // Sectors
             for (i = 0; i < 60; i++) {
                 if (!(i % 5))
-                    neopixels_set(i, 20, 20, 0);
+                    libneopixels_set(i, 20, 20, 0);
                 else {
-                    neopixels_set(i, 1, 1, 1);
+                    libneopixels_set(i, 1, 1, 1);
                 }
             }
             // Hours
             i = 60 - (60 * (hours % 12) / 12);
-            neopixels_set((i - minutes / 12) % 60, 255, 0, 0);
-            neopixels_set((i - 1 - minutes / 12) % 60, 30, 0, 0);
-            neopixels_set((i + 1 - minutes / 12) % 60, 30, 0, 0);
+            libneopixels_set((i - minutes / 12) % 60, 255, 0, 0);
+            libneopixels_set((i - 1 - minutes / 12) % 60, 30, 0, 0);
+            libneopixels_set((i + 1 - minutes / 12) % 60, 30, 0, 0);
             // Minutes
             i = 60 - minutes;
-            neopixels_set(i % 60, 0, 255 * seconds / 59, 0);
-            neopixels_set((i + 1) % 60, 0, 255 - 255 * seconds / 59, 0);
+            libneopixels_set(i % 60, 0, 255 * seconds / 59, 0);
+            libneopixels_set((i + 1) % 60, 0, 255 - 255 * seconds / 59, 0);
             // Seconds
-            neopixels_set((60 - seconds) % 60, 0, 0, 255);
-            neopixels_show();
+            libneopixels_set((60 - seconds) % 60, 0, 0, 255);
+            libneopixels_show();
             break ;
         case 2:
             for (pixel = 0; pixel < 60; pixel++) {
-                neopixels_set(pixel, 0, 255 * (pixel + i) / 60, 0);
+                libneopixels_set(pixel, 0, 255 * (pixel + i) / 60, 0);
             }
-            neopixels_show();
+            libneopixels_show();
             i = (i + 1) % 60;
             break ;
         case 3:
             for (pixel = 0; pixel < 60; pixel++) {
-                neopixels_set(pixel, seconds, seconds, seconds);
+                libneopixels_set(pixel, seconds, seconds, seconds);
             }
             seconds = (seconds + 1) % 255;
-            neopixels_show();
+            libneopixels_show();
             break ;
         case 4:
             i = 1;
             for (pixel = 0; pixel < 16; pixel++) {
-                neopixels_set(pixel, ((seconds & i) && 1) * 255, 0, 0);
+                libneopixels_set(pixel, ((seconds & i) && 1) * 255, 0, 0);
                 i <<= 1;
             }
             seconds = (seconds + 1);
-            neopixels_show();
+            libneopixels_show();
             break ;
         case 5:
             for (pixel = 0; pixel < 60; pixel++) {
                 i = 255 * pixel / 60;
-                neopixels_set(pixel, i, 255 - i, 0);
+                libneopixels_set(pixel, i, 255 - i, 0);
             }
-            neopixels_show();
+            libneopixels_show();
     }
     IFS0bits.T1IF = 0;
 }
@@ -91,7 +106,7 @@ void __attribute__((vector(_TIMER_1_VECTOR),interrupt(IPL1AUTO)))
 void __attribute__((vector(_EXTERNAL_0_VECTOR),interrupt(IPL2AUTO)))
      button_press(void)
 {
-    neopixels_clear();
+    libneopixels_clear();
     mode = (mode + 1) % 6;
     IFS0bits.INT0IF = 0;
 }
@@ -114,10 +129,10 @@ void setup_callbacks(void)
     IPC0bits.INT0IP = 2;
     IPC0bits.INT0IS = 0;
     IEC0bits.INT0IE = 1;
-    asm volatile("ei");
+    asm volatile ("ei");
 }
 
-void configure_realtime_clock(void)
+void configure_real_time_clock(void)
 {
     RtccWrEnable(1);
     RTCCONbits.ON = 0;
@@ -137,36 +152,20 @@ void configure_ports(void)
 
 void i2c_send(void)
 {
-    I2CSetFrequency(1, F_PB, 100000);
-    I2CEnable(1, TRUE);
-    while (!I2CBusIsIdle(1));
-    I2CStart(1);
-    while (!(I2CGetStatus(1) & I2C_START));
-    while (!I2CTransmitterIsReady(1));
-    I2CSendByte(1, (BME280_ADDRESS << 1) | 0);
-    while (!I2CTransmissionHasCompleted(1));
-    while (!I2CByteWasAcknowledged(1));
-    while (!I2CTransmitterIsReady(1));
-    I2CSendByte(1, 0x7C);
-    while (!I2CTransmissionHasCompleted(1));
-    I2CRepeatStart(1);
-    while (!(I2CGetStatus(1) & I2C_START));
-    while (!I2CTransmitterIsReady(1));
-    I2CSendByte(1, (BME280_ADDRESS << 1) | 1);
-    while (!I2CTransmissionHasCompleted(1));
-    I2CReceiverEnable(1, 1);
-    while (!I2CReceivedDataIsAvailable(1));
-    temp = I2C1RCV;
-    I2CStop(1);
+    UINT8   out;
+
+    libi2c_enable(0, HIGHSPEED);
+    libi2c_read(0, BME280_ADDRESS, 0xFC, &out);
+    libi2c_disable(0);
 }
 
 void main(void)
 {
     SYSTEMConfigPerformance(8000000);
     configure_ports();
-    configure_realtime_clock();
-    neopixels_begin(&LATB, 0, 60);
+    configure_real_time_clock();
+    libneopixels_begin(&LATB, 0, 60);
     setup_callbacks();
-    i2c_send();
-    while (1);
+    while (1)
+        i2c_send();
 }

@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=enable.c disable.c write.c read.c _stop.c _start.c _send.c
+SOURCEFILES_QUOTED_IF_SPACED=_stop.c _start.c _send.c enable.c disable.c write.c read.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/enable.o ${OBJECTDIR}/disable.o ${OBJECTDIR}/write.o ${OBJECTDIR}/read.o ${OBJECTDIR}/_stop.o ${OBJECTDIR}/_start.o ${OBJECTDIR}/_send.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/enable.o.d ${OBJECTDIR}/disable.o.d ${OBJECTDIR}/write.o.d ${OBJECTDIR}/read.o.d ${OBJECTDIR}/_stop.o.d ${OBJECTDIR}/_start.o.d ${OBJECTDIR}/_send.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_stop.o ${OBJECTDIR}/_start.o ${OBJECTDIR}/_send.o ${OBJECTDIR}/enable.o ${OBJECTDIR}/disable.o ${OBJECTDIR}/write.o ${OBJECTDIR}/read.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_stop.o.d ${OBJECTDIR}/_start.o.d ${OBJECTDIR}/_send.o.d ${OBJECTDIR}/enable.o.d ${OBJECTDIR}/disable.o.d ${OBJECTDIR}/write.o.d ${OBJECTDIR}/read.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/enable.o ${OBJECTDIR}/disable.o ${OBJECTDIR}/write.o ${OBJECTDIR}/read.o ${OBJECTDIR}/_stop.o ${OBJECTDIR}/_start.o ${OBJECTDIR}/_send.o
+OBJECTFILES=${OBJECTDIR}/_stop.o ${OBJECTDIR}/_start.o ${OBJECTDIR}/_send.o ${OBJECTDIR}/enable.o ${OBJECTDIR}/disable.o ${OBJECTDIR}/write.o ${OBJECTDIR}/read.o
 
 # Source Files
-SOURCEFILES=enable.c disable.c write.c read.c _stop.c _start.c _send.c
+SOURCEFILES=_stop.c _start.c _send.c enable.c disable.c write.c read.c
 
 
 CFLAGS=
@@ -94,6 +94,24 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/_stop.o: _stop.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/_stop.o.d 
+	@${RM} ${OBJECTDIR}/_stop.o 
+	@${FIXDEPS} "${OBJECTDIR}/_stop.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_stop.o.d" -o ${OBJECTDIR}/_stop.o _stop.c   
+	
+${OBJECTDIR}/_start.o: _start.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/_start.o.d 
+	@${RM} ${OBJECTDIR}/_start.o 
+	@${FIXDEPS} "${OBJECTDIR}/_start.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_start.o.d" -o ${OBJECTDIR}/_start.o _start.c   
+	
+${OBJECTDIR}/_send.o: _send.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/_send.o.d 
+	@${RM} ${OBJECTDIR}/_send.o 
+	@${FIXDEPS} "${OBJECTDIR}/_send.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_send.o.d" -o ${OBJECTDIR}/_send.o _send.c   
+	
 ${OBJECTDIR}/enable.o: enable.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/enable.o.d 
@@ -118,25 +136,25 @@ ${OBJECTDIR}/read.o: read.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/read.o 
 	@${FIXDEPS} "${OBJECTDIR}/read.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/read.o.d" -o ${OBJECTDIR}/read.o read.c   
 	
+else
 ${OBJECTDIR}/_stop.o: _stop.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/_stop.o.d 
 	@${RM} ${OBJECTDIR}/_stop.o 
-	@${FIXDEPS} "${OBJECTDIR}/_stop.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_stop.o.d" -o ${OBJECTDIR}/_stop.o _stop.c   
+	@${FIXDEPS} "${OBJECTDIR}/_stop.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_stop.o.d" -o ${OBJECTDIR}/_stop.o _stop.c   
 	
 ${OBJECTDIR}/_start.o: _start.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/_start.o.d 
 	@${RM} ${OBJECTDIR}/_start.o 
-	@${FIXDEPS} "${OBJECTDIR}/_start.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_start.o.d" -o ${OBJECTDIR}/_start.o _start.c   
+	@${FIXDEPS} "${OBJECTDIR}/_start.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_start.o.d" -o ${OBJECTDIR}/_start.o _start.c   
 	
 ${OBJECTDIR}/_send.o: _send.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/_send.o.d 
 	@${RM} ${OBJECTDIR}/_send.o 
-	@${FIXDEPS} "${OBJECTDIR}/_send.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_send.o.d" -o ${OBJECTDIR}/_send.o _send.c   
+	@${FIXDEPS} "${OBJECTDIR}/_send.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_send.o.d" -o ${OBJECTDIR}/_send.o _send.c   
 	
-else
 ${OBJECTDIR}/enable.o: enable.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/enable.o.d 
@@ -160,24 +178,6 @@ ${OBJECTDIR}/read.o: read.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/read.o.d 
 	@${RM} ${OBJECTDIR}/read.o 
 	@${FIXDEPS} "${OBJECTDIR}/read.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/read.o.d" -o ${OBJECTDIR}/read.o read.c   
-	
-${OBJECTDIR}/_stop.o: _stop.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/_stop.o.d 
-	@${RM} ${OBJECTDIR}/_stop.o 
-	@${FIXDEPS} "${OBJECTDIR}/_stop.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_stop.o.d" -o ${OBJECTDIR}/_stop.o _stop.c   
-	
-${OBJECTDIR}/_start.o: _start.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/_start.o.d 
-	@${RM} ${OBJECTDIR}/_start.o 
-	@${FIXDEPS} "${OBJECTDIR}/_start.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_start.o.d" -o ${OBJECTDIR}/_start.o _start.c   
-	
-${OBJECTDIR}/_send.o: _send.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/_send.o.d 
-	@${RM} ${OBJECTDIR}/_send.o 
-	@${FIXDEPS} "${OBJECTDIR}/_send.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_send.o.d" -o ${OBJECTDIR}/_send.o _send.c   
 	
 endif
 

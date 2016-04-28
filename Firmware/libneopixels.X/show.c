@@ -24,37 +24,37 @@
  * RES = 50us+
  */
 
-void    neopixels_show(void)
+void    libneopixels_show(void)
 {
-    asm volatile (             "\n"
-    "    .set    noreorder"    "\n"
-    "    li      $t0,1"        "\n"
-    "    sllv    $t0,$t0,%3"   "\n"
-    "    move    %3,$t0"       "\n"
-    "    b       2f"           "\n"
-    "    lh      $t1,%0"       "\n"
-    "0:"                       "\n"
-    "    lw      $t2,0(%2)"    "\n"
-    "    addiu   %2,%2,4"      "\n"
-    "    li      $t0,24"       "\n"
-    "1:"                       "\n"
-    "    or      $t1,$t1,%3"   "\n"
-    "    sh      $t1,%0"       "\n"
-    "    ext     $t3,$t2,31,1" "\n"
-    "    xor     $t1,$t1,%3"   "\n"
-    "    beqzl   $t3,.+8"      "\n"
-    "    sh      $t1,%0"       "\n"
-    "    addiu   $t0,$t0,-1"   "\n"
-    "    sh      $t1,%0"       "\n"
-    "    bnez    $t0,1b"       "\n"
-    "    sll     $t2,$t2,1"    "\n"
-    "2:"                       "\n"
-    "    bnez    %1,0b"        "\n"
-    "    addiu   %1,%1,-1"     "\n"
+    asm volatile (                "\n"
+    "    .set    noreorder"       "\n"
+    "    li      $t0, 1"          "\n"
+    "    sllv    $t0, $t0, %3"    "\n"
+    "    move    %3, $t0"         "\n"
+    "    b       2f"              "\n"
+    "    lh      $t1, %0"         "\n"
+    "0:"                          "\n"
+    "    lw      $t2, 0(%2)"      "\n"
+    "    addiu   %2, %2, 4"       "\n"
+    "    li      $t0, 24"         "\n"
+    "1:"                          "\n"
+    "    or      $t1, $t1, %3"    "\n"
+    "    sh      $t1, %0"         "\n"
+    "    ext     $t3, $t2, 31, 1" "\n"
+    "    xor     $t1, $t1, %3"    "\n"
+    "    beqzl   $t3, .+8"        "\n"
+    "    sh      $t1, %0"         "\n"
+    "    addiu   $t0, $t0, -1"    "\n"
+    "    sh      $t1, %0"         "\n"
+    "    bnez    $t0, 1b"         "\n"
+    "    sll     $t2, $t2, 1"     "\n"
+    "2:"                          "\n"
+    "    bnez    %1, 0b"          "\n"
+    "    addiu   %1, %1, -1"      "\n"
     : "=m" (*_latch)
     : "r"  (_nleds),
       "r" (_leds),
       "r"  (_pin)
-    : "t0","t1","t2","t3"
+    : "t0", "t1", "t2", "t3"
     );
 }

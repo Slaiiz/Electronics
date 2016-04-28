@@ -7,27 +7,42 @@
 
 #include "libi2c.h"
 
-UINT32  libi2c_read(I2C_MODULE id, UINT8 addr, UINT8* data, UINT32 n)
+/*
+ * libi2c_read:
+ * Send a complete read request to a given I2C slave from register
+ * address 'reg' and return the result in 'data'.
+ * This function is able to read one byte only per call.
+ */
+
+I2C_RESULT  libi2c_read(I2C_MODULE id, UINT8 addr, UINT8 reg, UINT8* data)
 {
     I2C_RESULT  error;
 
-    do {
+    while (1) {
         _libi2c_start(id);
         if ((error = _libi2c_send(id, (addr << 1) | 0)) != I2C_SUCCESS) {
-            if (error == I2C_MASTER_BUS_COLLISION) {
-                _libi2c_stop(id);
-                continue ;
-            }
-        }
-        while (n--)
-            if ((error = _libi2c_send(id, *data++)) != I2C_SUCCESS)
-                break ;
-        if (error == I2C_MASTER_BUS_COLLISION) {
             _libi2c_stop(id);
-            continue ;
+            if (error == I2C_MASTER_BUS_COLLISION)
+                continue ;
+            return (I2C_ERROR);
         }
-        while (!I2CTransmissionHasCompleted(id));
+        if ((error = _libi2c_send(id, reg)) != I2C_SUCCESS) {
+            _libi2c_stop(id);
+            if (error == I2C_MASTER_BUS_COLLISION)
+                continue ;
+            return (I2C_ERROR);
+        }
+        while (I2CRepeatStart(id) != I2C_SUCCESS);
+        if ((error = _libi2c_send(id, (addr << 1) | 1)) != I2C_SUCCESS) {
+            _libi2c_stop(id);
+            if (error == I2C_MASTER_BUS_COLLISION)
+                continue ;
+            return (I2C_ERROR);
+        }
+        I2CReceiverEnable(id, TRUE);
+        while (!I2CReceivedDataIsAvailable(id));
+        *data = I2CGetByte(id);
         _libi2c_stop(id);
-        return (0);
-    } while (1);
+        return (I2C_SUCCESS);
+    }
 }
