@@ -40,6 +40,7 @@ void    libi2c_enable(I2C_MODULE id, e_mode mode)
         case 0b010: // PRI
             break ;
     }
+    freq /= pllodiv[(DEVCFG1 >> 12) & 3];
     I2CSetFrequency(id, freq, mode);
     I2CEnable(id, TRUE);
 }

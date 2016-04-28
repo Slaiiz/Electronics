@@ -154,7 +154,7 @@ void i2c_send(void)
 {
     UINT8   out;
 
-    libi2c_enable(0, HIGHSPEED);
+    libi2c_enable(0, STANDARD);
     libi2c_read(0, BME280_ADDRESS, 0xFC, &out);
     libi2c_disable(0);
 }
