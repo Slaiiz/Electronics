@@ -15,7 +15,7 @@
 
 #include "libneopixels.h"
 
-void    libneopixels_set(UINT8 led, UINT8 r, UINT8 g, UINT8 b)
+void    libneopixels_set(UINT32 led, UINT8 r, UINT8 g, UINT8 b)
 {
-    _leds[led] = (b << 8) | (r << 16) | (g << 24);
+    _leds[led] = ((UINT32)b << 8) | ((UINT32)r << 16) | ((UINT32)g << 24);
 }

@@ -7,22 +7,16 @@
 
 #include "rainbowclock.h"
 
-UINT32 static   mode = 0;
-UINT32 static   temp = 0;
+UINT32 static   mode  = 5;
+UINT32 static   temp  = 0;
+
+UINT8   tmp;
+INT32   var1, var2, adc_T;
+INT32   dig_T1, dig_T2, dig_T3;
 
 UINT32 bcd_to_dec(UINT32 n)
 {
-    UINT32   out;
-    UINT32    i;
-
-    i = 1;
-    out = 0;
-    while (n) {
-        out += (n & 15) * i;
-        n >>= 4;
-        i *= 10;
-    }
-    return (out);
+    return (n / 16 * 10 + n % 16);
 }
 
 void __attribute__((vector(_TIMER_1_VECTOR),interrupt(IPL1AUTO)))
@@ -94,9 +88,32 @@ void __attribute__((vector(_TIMER_1_VECTOR),interrupt(IPL1AUTO)))
             libneopixels_show();
             break ;
         case 5:
-            for (pixel = 0; pixel < 60; pixel++) {
-                i = 255 * pixel / 60;
-                libneopixels_set(pixel, i, 255 - i, 0);
+//            libi2c_read(0, BME280_ADDRESS, 0x88, &tmp);
+//            dig_T1 = tmp;
+//            libi2c_read(0, BME280_ADDRESS, 0x89, &tmp);
+//            dig_T1 |= tmp << 8;
+//            libi2c_read(0, BME280_ADDRESS, 0x8A, &tmp);
+//            dig_T2 = tmp;
+//            libi2c_read(0, BME280_ADDRESS, 0x8B, &tmp);
+//            dig_T2 |= tmp << 8;
+//            libi2c_read(0, BME280_ADDRESS, 0x8C, &tmp);
+//            dig_T3 = tmp;
+//            libi2c_read(0, BME280_ADDRESS, 0x8D, &tmp);
+//            dig_T3 |= tmp << 8;
+//            libi2c_read(0, BME280_ADDRESS, 0xF9, &tmp);
+//            adc_T = tmp;
+//            libi2c_read(0, BME280_ADDRESS, 0xF8, &tmp);
+//            adc_T |= tmp << 4;
+//            libi2c_read(0, BME280_ADDRESS, 0xF7, &tmp);
+//            adc_T |= tmp << 8;
+//
+//            var1 = (((adc_T >> 3) - (dig_T1 << 1)) * dig_T2) >> 11;
+//            var2 = (((((adc_T >> 4) - dig_T1) * ((adc_T >> 4) - dig_T1)) >> 12) * dig_T3) >> 14;
+//            temp = ((var1 + var2) * 5 + 128) >> 8;
+            libi2c_read(0, 104, 0x00, &tmp);
+            for (pixel = 0; pixel < tmp; ++pixel) {
+                i = 32 * pixel / 60;
+                libneopixels_set(pixel, i, 32 - i, 0);
             }
             libneopixels_show();
     }
@@ -150,22 +167,21 @@ void configure_ports(void)
     TRISFbits.TRISF6   = 1;
 }
 
-void i2c_send(void)
-{
-    UINT8   out;
-
-    libi2c_enable(0, STANDARD);
-    libi2c_read(0, BME280_ADDRESS, 0xFC, &out);
-    libi2c_disable(0);
-}
-
 void main(void)
 {
+    UINT8   req[2];
+
     SYSTEMConfigPerformance(8000000);
     configure_ports();
     configure_real_time_clock();
     libneopixels_begin(&LATB, 0, 60);
     setup_callbacks();
-    while (1)
-        i2c_send();
+    libi2c_enable(0, STANDARD);
+    req[0] = 0x07;
+    req[1] = 0x93;
+    libi2c_write(0, 104, req, 2);
+    req[0] = 0x00;
+    req[1] = 0x01;
+    libi2c_write(0, 104, req, 2);
+    while (1);
 }

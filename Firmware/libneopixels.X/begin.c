@@ -15,8 +15,8 @@
 
 #include "libneopixels.h"
 
-UINT8   _leds[60];
-UINT32* _latch;
+UINT32  _leds[60];
+UINT16* _latch;
 UINT32  _nleds;
 UINT8   _pin;
 
@@ -24,9 +24,9 @@ UINT8   _pin;
  * Example : neopixels_begin(&LATF, 1, 60);
  */
 
-void    libneopixels_begin(volatile UINT8* port, UINT8 pin, UINT32 numleds)
+void    libneopixels_begin(volatile UINT16* port, UINT8 pin, UINT32 numleds)
 {
     _nleds = numleds;
-    _latch = port;
+    _latch = (UINT16*)port;
     _pin = pin;
 }

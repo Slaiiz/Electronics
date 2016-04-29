@@ -9,10 +9,12 @@
 
 /*
  * libi2c_write:
- * Send a complete write request to a given I2C slave module.
- * The request shall be encoded in an array of UINT8 pointed at by 'data'
- * according to the specifications of your slave module, with 'n' indicating
- * the size in bytes of your request.
+ * Send a complete write request to a given I2C slave module responding to
+ * address 'addr'. The request shall be encoded in an array of UINT8 pointed
+ * at by 'data' according to the specifications of your slave module,
+ * with 'n' indicating the size in bytes of your request.
+ * This function was not designed for reading data from a slave. For that
+ * purpose, use the libi2c_read() function instead.
  */
 
 I2C_RESULT  libi2c_write(I2C_MODULE id, UINT8 addr, UINT8* data, UINT32 n)

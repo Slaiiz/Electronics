@@ -9,9 +9,9 @@
 
 /*
  * libi2c_read:
- * Send a complete read request to a given I2C slave from register
- * address 'reg' and return the result in 'data'.
- * This function is able to read one byte only per call.
+ * Send a complete read request to a given I2C slave responding to address
+ * 'addr', for reading from slave's register address 'reg' and return
+ * the result in 'data'. This function is able to read one byte only per call.
  */
 
 I2C_RESULT  libi2c_read(I2C_MODULE id, UINT8 addr, UINT8 reg, UINT8* data)
@@ -41,6 +41,7 @@ I2C_RESULT  libi2c_read(I2C_MODULE id, UINT8 addr, UINT8 reg, UINT8* data)
         }
         I2CReceiverEnable(id, TRUE);
         while (!I2CReceivedDataIsAvailable(id));
+        I2CAcknowledgeByte(id, FALSE);
         *data = I2CGetByte(id);
         _libi2c_stop(id);
         return (I2C_SUCCESS);
