@@ -26,4 +26,4 @@
      |        Total: 12 | Total: 27 |
      |__________________|___________|
 
-* pin is remappable for a function (Output compare, UART, SPI, NMI, etc...)
+     * pin is remappable for a function (Output compare, UART, SPI, NMI, etc...)
