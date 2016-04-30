@@ -27,7 +27,6 @@ void __attribute__((vector(_TIMER_1_VECTOR),interrupt(IPL1AUTO)))
     UINT32          hours;
     UINT8 static    pixel;
     UINT32          i;
-
     switch (mode) {
         case 0:
             libneopixels_set(pixel + 0, 0, 0, 0);
