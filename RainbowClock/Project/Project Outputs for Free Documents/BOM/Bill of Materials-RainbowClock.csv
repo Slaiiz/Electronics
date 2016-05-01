@@ -1,0 +1,10 @@
+Comment,Description,Designator,Footprint,LibRef,Quantity
+
+"Cap","Capacitor","C1, C2, C3, C4, C7, C8, C9, C10, C11","RAD-0.3","Cap","9"
+"3306P-1-202","Trimmer Potentiometer","R1","","3306P-1-202","1"
+"SW-PB","Switch","S1, S2","SPST-2","SW-PB","2"
+"PIC32MX110F016D-I/PT","Microcontroller","U1","","PIC32MX110F016D-I/PT","1"
+"BMP280","Temp. sensor","U2","","BMP280","1"
+"MC42003A6W-BNMLW","LCD","U3","","MC42003A6W-BNMLW","1"
+"8MHz","Crystal Oscillator","Y1","R38","XTAL","1"
+"32kHz","Crystal Oscillator","Y2","R38","XTAL","1"
