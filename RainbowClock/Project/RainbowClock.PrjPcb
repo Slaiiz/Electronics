@@ -28,7 +28,7 @@ PowerPortNamesTakePriority=0
 PushECOToAnnotationFile=1
 DItemRevisionGUID=
 ReportSuppressedErrorsInMessages=0
-OutputPath=Project Outputs for RainbowClock
+OutputPath=
 LogFolderPath=
 ManagedProjectGUID=
 
@@ -71,6 +71,23 @@ GenerateClassCluster=0
 DocumentUniqueId=FJHKEJWE
 
 [Document3]
+DocumentPath=Shematics\NeopixelNetwork.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=JHLDVIAP
+
+[Document4]
 DocumentPath=Shematics\Temperature.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -87,7 +104,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=IICUHHOO
 
-[Document4]
+[Document5]
 DocumentPath=Shematics\Bluetooth.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -104,7 +121,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=TRSMJDFK
 
-[Document5]
+[Document6]
 DocumentPath=Shematics\LCD.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -120,23 +137,6 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=AEIGDRHI
-
-[Document6]
-DocumentPath=..\..\..\Rain_bow_clock\PCB_design_(Altium)\Rain_bow_Clock\Rendering.OutJob
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=
 
 [Document7]
 DocumentPath=Shematics\Neopixel.SchDoc
@@ -208,7 +208,7 @@ GenerateBOM=1
 OutputJobsCount=0
 
 [Generic_EDE]
-OutputDir=Project Outputs for RainbowClock
+OutputDir=
 
 [OutputGroup1]
 Name=Netlist Outputs
