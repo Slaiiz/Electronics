@@ -62,7 +62,7 @@ Configuration2_Item2=OpenExported=False|AddToProject=False|ForceFit=False|NotFit
 Configuration2_Name3=GroupOrder
 Configuration2_Item3=Comment=True|Footprint=True
 Configuration2_Name4=OutputConfigurationParameter1
-Configuration2_Item4=??
+Configuration2_Item4=??
 Configuration2_Name5=SortOrder
 Configuration2_Item5=Designator=Up|Comment=Up|Footprint=Up
 Configuration2_Name6=VisibleOrder

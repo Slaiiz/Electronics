@@ -1,0 +1,80 @@
+Bill of Material for 
+On 06/05/2016 at 15:21:49
+
+ Comment             Pattern     Quantity  Components
+------------------------------------------------------------------------------
+ 1-215876-3                           1    J?                           Tyco 1-215876-3      
+ 16pin fem                            1    J?                           pas 2.54mm           
+ 3306P-1-202         3306P-1-202      2    R?, R?                       Trimpot              
+ BMP280                               1    U?                           Temp. sensor         
+ Cap                 RAD-0.3         69    C?, C?, C?, C?, C?, C?, C?   Capacitor            
+                                           C?, C?, C?_NeoPixel1
+                                           C?_NeoPixel2, C?_NeoPixel3
+                                           C?_NeoPixel4, C?_NeoPixel5
+                                           C?_NeoPixel6, C?_NeoPixel7
+                                           C?_NeoPixel8, C?_NeoPixel9
+                                           C?_NeoPixel10, C?_NeoPixel11
+                                           C?_NeoPixel12, C?_NeoPixel13
+                                           C?_NeoPixel14, C?_NeoPixel15
+                                           C?_NeoPixel16, C?_NeoPixel17
+                                           C?_NeoPixel18, C?_NeoPixel19
+                                           C?_NeoPixel20, C?_NeoPixel21
+                                           C?_NeoPixel22, C?_NeoPixel23
+                                           C?_NeoPixel24, C?_NeoPixel25
+                                           C?_NeoPixel26, C?_NeoPixel27
+                                           C?_NeoPixel28, C?_NeoPixel29
+                                           C?_NeoPixel30, C?_NeoPixel31
+                                           C?_NeoPixel32, C?_NeoPixel33
+                                           C?_NeoPixel34, C?_NeoPixel35
+                                           C?_NeoPixel36, C?_NeoPixel37
+                                           C?_NeoPixel38, C?_NeoPixel39
+                                           C?_NeoPixel40, C?_NeoPixel41
+                                           C?_NeoPixel42, C?_NeoPixel43
+                                           C?_NeoPixel44, C?_NeoPixel45
+                                           C?_NeoPixel46, C?_NeoPixel47
+                                           C?_NeoPixel48, C?_NeoPixel49
+                                           C?_NeoPixel50, C?_NeoPixel51
+                                           C?_NeoPixel52, C?_NeoPixel53
+                                           C?_NeoPixel54, C?_NeoPixel55
+                                           C?_NeoPixel56, C?_NeoPixel57
+                                           C?_NeoPixel58, C?_NeoPixel59
+                                           C?_NeoPixel60
+ EC11B152420G-STEC11B01 EC11B152420G-STEC11B01    1    S?                           Rotary coder         
+ HC-06                                1    U?                           Bluetooth            
+ Header 6            HDR1X6           2    P?, P?                       Header, 6-Pin        
+ LDR                                  1    LDR?                         Photoresistor        
+ MC42003A6W-BNMLW    MC42004A6W-BNMLW    1    U?                           LCD                  
+ PIC32MX110F016D-I/PT                  1    U?                           Microcontroller      
+ Res1                AXIAL-0.3        5    R?, R?, R?, R?, R?           Resistor             
+ SW-PB               SPST-2           2    S?, S?                       Switch               
+ WS2012B             WS2812b         60    U?_NeoPixel1, U?_NeoPixel2   Neopixel             
+                                           U?_NeoPixel3, U?_NeoPixel4
+                                           U?_NeoPixel5, U?_NeoPixel6
+                                           U?_NeoPixel7, U?_NeoPixel8
+                                           U?_NeoPixel9, U?_NeoPixel10
+                                           U?_NeoPixel11, U?_NeoPixel12
+                                           U?_NeoPixel13, U?_NeoPixel14
+                                           U?_NeoPixel15, U?_NeoPixel16
+                                           U?_NeoPixel17, U?_NeoPixel18
+                                           U?_NeoPixel19, U?_NeoPixel20
+                                           U?_NeoPixel21, U?_NeoPixel22
+                                           U?_NeoPixel23, U?_NeoPixel24
+                                           U?_NeoPixel25, U?_NeoPixel26
+                                           U?_NeoPixel27, U?_NeoPixel28
+                                           U?_NeoPixel29, U?_NeoPixel30
+                                           U?_NeoPixel31, U?_NeoPixel32
+                                           U?_NeoPixel33, U?_NeoPixel34
+                                           U?_NeoPixel35, U?_NeoPixel36
+                                           U?_NeoPixel37, U?_NeoPixel38
+                                           U?_NeoPixel39, U?_NeoPixel40
+                                           U?_NeoPixel41, U?_NeoPixel42
+                                           U?_NeoPixel43, U?_NeoPixel44
+                                           U?_NeoPixel45, U?_NeoPixel46
+                                           U?_NeoPixel47, U?_NeoPixel48
+                                           U?_NeoPixel49, U?_NeoPixel50
+                                           U?_NeoPixel51, U?_NeoPixel52
+                                           U?_NeoPixel53, U?_NeoPixel54
+                                           U?_NeoPixel55, U?_NeoPixel56
+                                           U?_NeoPixel57, U?_NeoPixel58
+                                           U?_NeoPixel59, U?_NeoPixel60
+ XTAL                R38              2    Y?, Y?                       Crystal Oscillator   
