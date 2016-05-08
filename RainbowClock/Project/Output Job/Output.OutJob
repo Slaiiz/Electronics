@@ -15,13 +15,13 @@ LifeCycleDefinitionGUID=
 RevisionNamingSchemeGUID=
 
 [OutputGroup1]
-Name=
+Name=Output.OutJob
 Description=
-TargetOutputMedium=Bill of Materials
+TargetOutputMedium=Schematic Prints
 VariantName=[No Variations]
 VariantScope=1
 CurrentConfigurationName=
-TargetPrinter=Send To OneNote 2013
+TargetPrinter=Virtual Printer
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=0
 OutputMedium1=Print Job
 OutputMedium1_Type=Printer
@@ -31,47 +31,47 @@ OutputMedium2=Schematic Prints
 OutputMedium2_Type=Publish
 OutputMedium3=Bill of Materials
 OutputMedium3_Type=GeneratedFiles
-OutputType1=Schematic Print
-OutputName1=Schematic Prints
-OutputCategory1=Documentation
+OutputType1=BOM_PartType
+OutputName1=Bill of Materials
+OutputCategory1=Report
 OutputDocumentPath1=
 OutputVariantName1=
 OutputEnabled1=0
 OutputEnabled1_OutputMedium1=0
-OutputEnabled1_OutputMedium2=1
-OutputEnabled1_OutputMedium3=0
+OutputEnabled1_OutputMedium2=0
+OutputEnabled1_OutputMedium3=1
 OutputDefault1=0
 PageOptions1=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=0|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=Letter|PaperIndex=1
-Configuration1_Name1=OutputConfigurationParameter1
-Configuration1_Item1=Record=SchPrintView|ShowNoERC=True|ShowParamSet=True|ShowProbe=True|ShowBlanket=True|NoERCSymbolsToShow="Thin Cross","Thick Cross","Small Cross",Checkbox,Triangle|ShowNote=True|ShowNoteCollapsed=True|ExpandDesignator=True|ExpandNetLabel=False|ExpandPort=False|ExpandSheetNum=False|ExpandDocNum=False|PrintArea=0|PrintAreaRect.X1=0|PrintAreaRect.Y1=0|PrintAreaRect.X2=0|PrintAreaRect.Y2=0
-OutputType2=BOM_PartType
-OutputName2=Bill of Materials
-OutputCategory2=Report
+Configuration1_Name1=Filter
+Configuration1_Item1=545046300E5446696C74657257726170706572000D46696C7465722E416374697665090F46696C7465722E43726974657269610A04000000000000000000
+Configuration1_Name2=General
+Configuration1_Item2=OpenExported=False|AddToProject=False|ForceFit=True|NotFitted=False|Database=False|IncludePCBData=False|IncludeVaultData=False|ShowExportOptions=True|TemplateFilename=Board Stack Report.XLT|BatchMode=0|FormWidth=1062|FormHeight=753|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=<none>
+Configuration1_Name3=GroupOrder
+Configuration1_Item3=Comment=True|Footprint=True
+Configuration1_Name4=OutputConfigurationParameter1
+Configuration1_Item4=??
+Configuration1_Name5=PCBDocument
+Configuration1_Item5=FileName=Board.PcbDoc
+Configuration1_Name6=SortOrder
+Configuration1_Item6=Quantity=Up
+Configuration1_Name7=VisibleOrder
+Configuration1_Item7=Comment=20|Description=20|Designator=34|Footprint=225|LibRef=225|Quantity=226
+OutputType2=Schematic Print
+OutputName2=Schematic Prints
+OutputCategory2=Documentation
 OutputDocumentPath2=
 OutputVariantName2=
 OutputEnabled2=1
 OutputEnabled2_OutputMedium1=0
-OutputEnabled2_OutputMedium2=0
-OutputEnabled2_OutputMedium3=1
+OutputEnabled2_OutputMedium2=1
+OutputEnabled2_OutputMedium3=0
 OutputDefault2=0
-PageOptions2=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=0|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=Letter|PaperIndex=1
-Configuration2_Name1=Filter
-Configuration2_Item1=545046300E5446696C74657257726170706572000D46696C7465722E416374697665090F46696C7465722E43726974657269610A04000000000000000000
-Configuration2_Name2=General
-Configuration2_Item2=OpenExported=False|AddToProject=False|ForceFit=True|NotFitted=False|Database=False|IncludePCBData=False|IncludeVaultData=False|ShowExportOptions=True|TemplateFilename=Board Stack Report.XLT|BatchMode=0|FormWidth=1062|FormHeight=753|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=<none>
-Configuration2_Name3=GroupOrder
-Configuration2_Item3=Comment=True|Footprint=True
-Configuration2_Name4=OutputConfigurationParameter1
-Configuration2_Item4=??
-Configuration2_Name5=PCBDocument
-Configuration2_Item5=FileName=Board.PcbDoc
-Configuration2_Name6=SortOrder
-Configuration2_Item6=Quantity=Up
-Configuration2_Name7=VisibleOrder
-Configuration2_Item7=Comment=20|Description=20|Designator=34|Footprint=225|LibRef=225|Quantity=226
+PageOptions2=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=0.94|XCorrection=1.00|YCorrection=1.00|PrintKind=0|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=Letter|PaperIndex=1
+Configuration2_Name1=OutputConfigurationParameter1
+Configuration2_Item1=Record=SchPrintView|ShowNoERC=True|ShowParamSet=True|ShowProbe=True|ShowBlanket=True|NoERCSymbolsToShow="Thin Cross","Thick Cross","Small Cross",Checkbox,Triangle|ShowNote=True|ShowNoteCollapsed=True|ExpandDesignator=True|ExpandNetLabel=False|ExpandPort=False|ExpandSheetNum=False|ExpandDocNum=False|PrintArea=0|PrintAreaRect.X1=0|PrintAreaRect.Y1=0|PrintAreaRect.X2=0|PrintAreaRect.Y2=0
 
 [PublishSettings]
-OutputFilePath2=C:\Users\bocal\Desktop\schiad\Electronics\RainbowClock\Project\Output Job\Schematic Prints\Schematic Prints.PDF
+OutputFilePath2=C:\Users\bocal\Desktop\Electronics\RainbowClock\Project\Output Job\Schematic Prints\Schematic Prints.PDF
 ReleaseManaged2=0
 OutputBasePath2=Output Job\
 OutputPathMedia2=[Media Name]
@@ -111,7 +111,7 @@ OutputFileNameSpecial3=
 OpenOutput3=1
 
 [GeneratedFilesSettings]
-RelativeOutputPath2=C:\Users\bocal\Desktop\schiad\Electronics\RainbowClock\Project\Output Job\Schematic Prints\Schematic Prints.PDF
+RelativeOutputPath2=C:\Users\bocal\Desktop\Electronics\RainbowClock\Project\Output Job\Schematic Prints\Schematic Prints.PDF
 OpenOutputs2=1
 RelativeOutputPath3=C:\Users\bocal\Desktop\schiad\Electronics\RainbowClock\Project\Output Job\Bill of Materials\
 OpenOutputs3=1
