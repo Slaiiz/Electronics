@@ -1,0 +1,41 @@
+Altium Designer System: Library Component Rule Check
+PCB File : Components
+Date     : 5/5/2016
+Time     : 3:37:28 PM
+
+
+Name                Warnings
+------------------------------------------------------------------
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(7.4mm,10.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(6.6mm,10.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(5.8mm,10.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(5mm,10.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(4.2mm,10.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(3.4mm,10.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(2.6mm,10.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(1.8mm,10.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(9mm,10.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(1mm,10.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-11(-0.75mm,9mm)  Top Layer And Pad Free-11(10.75mm,9mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-10(-0.75mm,8.2mm)  Top Layer And Pad Free-10(10.75mm,8.2mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-9(-0.75mm,7.4mm)  Top Layer And Pad Free-9(10.75mm,7.4mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-8(-0.75mm,6.6mm)  Top Layer And Pad Free-8(10.75mm,6.6mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-7(-0.75mm,5.8mm)  Top Layer And Pad Free-7(10.75mm,5.8mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-6(-0.75mm,5mm)  Top Layer And Pad Free-6(10.75mm,5mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-5(-0.75mm,4.2mm)  Top Layer And Pad Free-5(10.75mm,4.2mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-4(-0.75mm,3.4mm)  Top Layer And Pad Free-4(10.75mm,3.4mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-3(-0.75mm,2.6mm)  Top Layer And Pad Free-3(10.75mm,2.6mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-2(-0.75mm,1.8mm)  Top Layer And Pad Free-2(10.75mm,1.8mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-1(-0.75mm,1mm)  Top Layer And Pad Free-1(10.75mm,1mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(1mm,-0.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(9mm,-0.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(1.8mm,-0.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(2.6mm,-0.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(3.4mm,-0.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(4.2mm,-0.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(5mm,-0.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(5.8mm,-0.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(6.6mm,-0.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(7.4mm,-0.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+PIC32MX110F016H-I/PT     Duplicate Pad Name On Pads Pad Free-14(8.2mm,-0.75mm)  Top Layer And Pad Free-14(8.2mm,10.75mm)  Top Layer
+
