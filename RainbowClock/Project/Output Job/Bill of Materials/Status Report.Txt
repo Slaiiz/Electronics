@@ -1,14 +1,14 @@
 Project Outputs Generation Report
 ---------------------------------
-Start Output Generation At 10:21:10 On 10/05/2016
+Start Output Generation At 6:09:26 PM On 5/13/2016
 
 Output: Bill of Materials
 Type  : BOM
 From  : Variant [[No Variations]] of Project [RainbowClock.PrjPcb]
-   Generated File[Bill of Materials.csv]
+   Generated File[Bill of Materials.xlsx]
 
 
 Files Generated   : 1
 Documents Printed : 0
 
-Finished Output Generation At 10:21:21 On 10/05/2016
+Finished Output Generation At 6:09:33 PM On 5/13/2016
