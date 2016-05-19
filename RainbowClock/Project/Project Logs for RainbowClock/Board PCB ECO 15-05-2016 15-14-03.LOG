@@ -1,0 +1,6 @@
+Added Pin To Net: NetName=DIN Pin=U1-38
+Added Pin To Net: NetName=DIN Pin=U3_NeoPixel1-4
+Added Net: Name=DIN
+Added Pin To Net: NetName=NetU1_41 Pin=U1-41
+Added Pin To Net: NetName=NetU1_41 Pin=U3_NeoPixel60-2
+Added Net: Name=NetU1_41
