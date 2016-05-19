@@ -1,0 +1,2 @@
+Removed Pin From Net: NetName=V3P3 Pin=LDR1-1
+Added Pin To Net: NetName=V3P3A Pin=LDR1-1
