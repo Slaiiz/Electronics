@@ -1,0 +1,3 @@
+Removed Pin From Net: NetName=E Pin=U1-24
+Added Pin To Net: NetName=E Pin=U1-5
+Added Member To Class: ClassName=LCD Member=Component P1 Header 16
