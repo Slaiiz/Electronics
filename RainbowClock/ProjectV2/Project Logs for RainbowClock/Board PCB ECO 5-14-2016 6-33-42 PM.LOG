@@ -1,0 +1,304 @@
+Removed Pin From Net: NetName=GND Pin=P1-1
+Removed Pin From Net: NetName=V5 Pin=P1-2
+Removed Pin From Net: NetName=V0 Pin=P1-3
+Removed Pin From Net: NetName=RS Pin=P1-4
+Removed Pin From Net: NetName=GND Pin=P1-5
+Removed Pin From Net: NetName=E Pin=P1-6
+Removed Pin From Net: NetName=D0 Pin=P1-7
+Removed Pin From Net: NetName=D1 Pin=P1-8
+Removed Pin From Net: NetName=D2 Pin=P1-9
+Removed Pin From Net: NetName=D3 Pin=P1-10
+Removed Pin From Net: NetName=D4 Pin=P1-11
+Removed Pin From Net: NetName=D5 Pin=P1-12
+Removed Pin From Net: NetName=D6 Pin=P1-13
+Removed Pin From Net: NetName=D7 Pin=P1-14
+Removed Pin From Net: NetName=LED+ Pin=P1-15
+Removed Pin From Net: NetName=GND Pin=P1-16
+Removed Pin From Net: NetName=RX Pin=P2-2
+Removed Pin From Net: NetName=TX Pin=P2-3
+Removed Pin From Net: NetName=GND Pin=P2-4
+Removed Pin From Net: NetName=V3P3 Pin=P2-5
+Removed Pin From Net: NetName=V3P3 Pin=P3-1
+Removed Pin From Net: NetName=GND Pin=P3-2
+Removed Pin From Net: NetName=SCL Pin=P3-3
+Removed Pin From Net: NetName=SDA Pin=P3-4
+Removed Pin From Net: NetName=CSB Pin=P3-5
+Removed Pin From Net: NetName=SDO Pin=P3-6
+Added Component: Designator=C1(CAP0603)
+Added Component: Designator=C2(CAP0603)
+Added Component: Designator=C3(CAP0603)
+Added Component: Designator=C4(CAP0603)
+Added Component: Designator=C5(CAP0603)
+Added Component: Designator=C6(CAP0603)
+Added Component: Designator=C7(CAP0603)
+Added Component: Designator=C8(CAP0603)
+Added Component: Designator=C9(CAP0603)
+Added Component: Designator=C10_NeoPixel1(CAP0603)
+Added Component: Designator=C10_NeoPixel2(CAP0603)
+Added Component: Designator=C10_NeoPixel3(CAP0603)
+Added Component: Designator=C10_NeoPixel4(CAP0603)
+Added Component: Designator=C10_NeoPixel5(CAP0603)
+Added Component: Designator=C10_NeoPixel6(CAP0603)
+Added Component: Designator=C10_NeoPixel7(CAP0603)
+Added Component: Designator=C10_NeoPixel8(CAP0603)
+Added Component: Designator=C10_NeoPixel9(CAP0603)
+Added Component: Designator=C10_NeoPixel10(CAP0603)
+Added Component: Designator=C10_NeoPixel11(CAP0603)
+Added Component: Designator=C10_NeoPixel12(CAP0603)
+Added Component: Designator=C10_NeoPixel13(CAP0603)
+Added Component: Designator=C10_NeoPixel14(CAP0603)
+Added Component: Designator=C10_NeoPixel15(CAP0603)
+Added Component: Designator=C10_NeoPixel16(CAP0603)
+Added Component: Designator=C10_NeoPixel17(CAP0603)
+Added Component: Designator=C10_NeoPixel18(CAP0603)
+Added Component: Designator=C10_NeoPixel19(CAP0603)
+Added Component: Designator=C10_NeoPixel20(CAP0603)
+Added Component: Designator=C10_NeoPixel21(CAP0603)
+Added Component: Designator=C10_NeoPixel22(CAP0603)
+Added Component: Designator=C10_NeoPixel23(CAP0603)
+Added Component: Designator=C10_NeoPixel24(CAP0603)
+Added Component: Designator=C10_NeoPixel25(CAP0603)
+Added Component: Designator=C10_NeoPixel26(CAP0603)
+Added Component: Designator=C10_NeoPixel27(CAP0603)
+Added Component: Designator=C10_NeoPixel28(CAP0603)
+Added Component: Designator=C10_NeoPixel29(CAP0603)
+Added Component: Designator=C10_NeoPixel30(CAP0603)
+Added Component: Designator=C10_NeoPixel31(CAP0603)
+Added Component: Designator=C10_NeoPixel32(CAP0603)
+Added Component: Designator=C10_NeoPixel33(CAP0603)
+Added Component: Designator=C10_NeoPixel34(CAP0603)
+Added Component: Designator=C10_NeoPixel35(CAP0603)
+Added Component: Designator=C10_NeoPixel36(CAP0603)
+Added Component: Designator=C10_NeoPixel37(CAP0603)
+Added Component: Designator=C10_NeoPixel38(CAP0603)
+Added Component: Designator=C10_NeoPixel39(CAP0603)
+Added Component: Designator=C10_NeoPixel40(CAP0603)
+Added Component: Designator=C10_NeoPixel41(CAP0603)
+Added Component: Designator=C10_NeoPixel42(CAP0603)
+Added Component: Designator=C10_NeoPixel43(CAP0603)
+Added Component: Designator=C10_NeoPixel44(CAP0603)
+Added Component: Designator=C10_NeoPixel45(CAP0603)
+Added Component: Designator=C10_NeoPixel46(CAP0603)
+Added Component: Designator=C10_NeoPixel47(CAP0603)
+Added Component: Designator=C10_NeoPixel48(CAP0603)
+Added Component: Designator=C10_NeoPixel49(CAP0603)
+Added Component: Designator=C10_NeoPixel50(CAP0603)
+Added Component: Designator=C10_NeoPixel51(CAP0603)
+Added Component: Designator=C10_NeoPixel52(CAP0603)
+Added Component: Designator=C10_NeoPixel53(CAP0603)
+Added Component: Designator=C10_NeoPixel54(CAP0603)
+Added Component: Designator=C10_NeoPixel55(CAP0603)
+Added Component: Designator=C10_NeoPixel56(CAP0603)
+Added Component: Designator=C10_NeoPixel57(CAP0603)
+Added Component: Designator=C10_NeoPixel58(CAP0603)
+Added Component: Designator=C10_NeoPixel59(CAP0603)
+Added Component: Designator=C10_NeoPixel60(CAP0603)
+Added Component: Designator=U2(MC42004A6W-BNMLW)
+Added Pin To Net: NetName=OSCI Pin=C1-1
+Added Pin To Net: NetName=GND Pin=C1-2
+Added Pin To Net: NetName=OSCO Pin=C2-1
+Added Pin To Net: NetName=GND Pin=C2-2
+Added Pin To Net: NetName=SOSCI Pin=C3-1
+Added Pin To Net: NetName=GND Pin=C3-2
+Added Pin To Net: NetName=GND Pin=C4-1
+Added Pin To Net: NetName=V3P3 Pin=C4-2
+Added Pin To Net: NetName=GND Pin=C5-1
+Added Pin To Net: NetName=V3P3 Pin=C5-2
+Added Pin To Net: NetName=GND Pin=C6-1
+Added Pin To Net: NetName=V3P3A Pin=C6-2
+Added Pin To Net: NetName=SOSCO Pin=C7-1
+Added Pin To Net: NetName=GND Pin=C7-2
+Added Pin To Net: NetName=VSS Pin=C8-1
+Added Pin To Net: NetName=NetC8_2 Pin=C8-2
+Added Pin To Net: NetName=VSS Pin=C9-1
+Added Pin To Net: NetName=NetC8_2 Pin=C9-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel1-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel1-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel2-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel2-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel3-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel3-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel4-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel4-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel5-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel5-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel6-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel6-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel7-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel7-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel8-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel8-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel9-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel9-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel10-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel10-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel11-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel11-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel12-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel12-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel13-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel13-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel14-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel14-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel15-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel15-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel16-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel16-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel17-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel17-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel18-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel18-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel19-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel19-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel20-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel20-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel21-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel21-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel22-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel22-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel23-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel23-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel24-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel24-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel25-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel25-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel26-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel26-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel27-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel27-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel28-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel28-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel29-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel29-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel30-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel30-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel31-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel31-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel32-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel32-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel33-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel33-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel34-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel34-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel35-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel35-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel36-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel36-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel37-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel37-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel38-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel38-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel39-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel39-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel40-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel40-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel41-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel41-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel42-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel42-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel43-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel43-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel44-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel44-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel45-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel45-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel46-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel46-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel47-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel47-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel48-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel48-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel49-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel49-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel50-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel50-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel51-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel51-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel52-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel52-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel53-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel53-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel54-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel54-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel55-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel55-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel56-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel56-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel57-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel57-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel58-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel58-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel59-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel59-2
+Added Pin To Net: NetName=VSS Pin=C10_NeoPixel60-1
+Added Pin To Net: NetName=5V Pin=C10_NeoPixel60-2
+Added Member To Class: ClassName=RainbowClock Member=Component C1 27pF
+Added Member To Class: ClassName=RainbowClock Member=Component C2 27pF
+Added Member To Class: ClassName=RainbowClock Member=Component C3 15pF
+Added Member To Class: ClassName=RainbowClock Member=Component C4 100nF
+Added Member To Class: ClassName=RainbowClock Member=Component C5 100nF
+Added Member To Class: ClassName=RainbowClock Member=Component C6 100nF
+Added Member To Class: ClassName=RainbowClock Member=Component C7 15pF
+Added Member To Class: ClassName=RainbowClock Member=Component C8 1uF
+Added Member To Class: ClassName=RainbowClock Member=Component C9 10uF
+Added Member To Class: ClassName=NeoPixel1 Member=Component C10_NeoPixel1 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel2 Member=Component C10_NeoPixel2 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel3 Member=Component C10_NeoPixel3 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel4 Member=Component C10_NeoPixel4 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel5 Member=Component C10_NeoPixel5 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel6 Member=Component C10_NeoPixel6 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel7 Member=Component C10_NeoPixel7 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel8 Member=Component C10_NeoPixel8 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel9 Member=Component C10_NeoPixel9 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel10 Member=Component C10_NeoPixel10 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel11 Member=Component C10_NeoPixel11 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel12 Member=Component C10_NeoPixel12 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel13 Member=Component C10_NeoPixel13 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel14 Member=Component C10_NeoPixel14 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel15 Member=Component C10_NeoPixel15 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel16 Member=Component C10_NeoPixel16 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel17 Member=Component C10_NeoPixel17 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel18 Member=Component C10_NeoPixel18 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel19 Member=Component C10_NeoPixel19 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel20 Member=Component C10_NeoPixel20 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel21 Member=Component C10_NeoPixel21 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel22 Member=Component C10_NeoPixel22 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel23 Member=Component C10_NeoPixel23 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel24 Member=Component C10_NeoPixel24 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel25 Member=Component C10_NeoPixel25 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel26 Member=Component C10_NeoPixel26 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel27 Member=Component C10_NeoPixel27 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel28 Member=Component C10_NeoPixel28 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel29 Member=Component C10_NeoPixel29 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel30 Member=Component C10_NeoPixel30 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel31 Member=Component C10_NeoPixel31 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel32 Member=Component C10_NeoPixel32 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel33 Member=Component C10_NeoPixel33 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel34 Member=Component C10_NeoPixel34 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel35 Member=Component C10_NeoPixel35 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel36 Member=Component C10_NeoPixel36 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel37 Member=Component C10_NeoPixel37 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel38 Member=Component C10_NeoPixel38 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel39 Member=Component C10_NeoPixel39 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel40 Member=Component C10_NeoPixel40 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel41 Member=Component C10_NeoPixel41 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel42 Member=Component C10_NeoPixel42 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel43 Member=Component C10_NeoPixel43 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel44 Member=Component C10_NeoPixel44 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel45 Member=Component C10_NeoPixel45 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel46 Member=Component C10_NeoPixel46 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel47 Member=Component C10_NeoPixel47 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel48 Member=Component C10_NeoPixel48 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel49 Member=Component C10_NeoPixel49 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel50 Member=Component C10_NeoPixel50 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel51 Member=Component C10_NeoPixel51 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel52 Member=Component C10_NeoPixel52 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel53 Member=Component C10_NeoPixel53 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel54 Member=Component C10_NeoPixel54 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel55 Member=Component C10_NeoPixel55 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel56 Member=Component C10_NeoPixel56 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel57 Member=Component C10_NeoPixel57 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel58 Member=Component C10_NeoPixel58 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel59 Member=Component C10_NeoPixel59 (C10) 100nF
+Added Member To Class: ClassName=NeoPixel60 Member=Component C10_NeoPixel60 (C10) 100nF
+Added Member To Class: ClassName=LCD Member=Component U2 MC42003A6W-BNMLW

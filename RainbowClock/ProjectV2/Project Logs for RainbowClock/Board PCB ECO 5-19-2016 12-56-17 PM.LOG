@@ -1,0 +1,120 @@
+Change Component Designator: OldDesignator=1 NewDesignator=U3_NeoPixel1
+Change Component Designator: OldDesignator=2 NewDesignator=U3_NeoPixel2
+Change Component Designator: OldDesignator=3 NewDesignator=U3_NeoPixel3
+Change Component Designator: OldDesignator=4 NewDesignator=U3_NeoPixel4
+Change Component Designator: OldDesignator=5 NewDesignator=U3_NeoPixel5
+Change Component Designator: OldDesignator=6 NewDesignator=U3_NeoPixel6
+Change Component Designator: OldDesignator=7 NewDesignator=U3_NeoPixel7
+Change Component Designator: OldDesignator=8 NewDesignator=U3_NeoPixel8
+Change Component Designator: OldDesignator=9 NewDesignator=U3_NeoPixel9
+Change Component Designator: OldDesignator=10 NewDesignator=U3_NeoPixel10
+Change Component Designator: OldDesignator=11 NewDesignator=U3_NeoPixel11
+Change Component Designator: OldDesignator=12 NewDesignator=U3_NeoPixel12
+Change Component Designator: OldDesignator=13 NewDesignator=U3_NeoPixel13
+Change Component Designator: OldDesignator=14 NewDesignator=U3_NeoPixel14
+Change Component Designator: OldDesignator=15 NewDesignator=U3_NeoPixel15
+Change Component Designator: OldDesignator=16 NewDesignator=U3_NeoPixel16
+Change Component Designator: OldDesignator=17 NewDesignator=U3_NeoPixel17
+Change Component Designator: OldDesignator=18 NewDesignator=U3_NeoPixel18
+Change Component Designator: OldDesignator=19 NewDesignator=U3_NeoPixel19
+Change Component Designator: OldDesignator=20 NewDesignator=U3_NeoPixel20
+Change Component Designator: OldDesignator=21 NewDesignator=U3_NeoPixel21
+Change Component Designator: OldDesignator=22 NewDesignator=U3_NeoPixel22
+Change Component Designator: OldDesignator=23 NewDesignator=U3_NeoPixel23
+Change Component Designator: OldDesignator=24 NewDesignator=U3_NeoPixel24
+Change Component Designator: OldDesignator=25 NewDesignator=U3_NeoPixel25
+Change Component Designator: OldDesignator=26 NewDesignator=U3_NeoPixel26
+Change Component Designator: OldDesignator=27 NewDesignator=U3_NeoPixel27
+Change Component Designator: OldDesignator=28 NewDesignator=U3_NeoPixel28
+Change Component Designator: OldDesignator=29 NewDesignator=U3_NeoPixel29
+Change Component Designator: OldDesignator=30 NewDesignator=U3_NeoPixel30
+Change Component Designator: OldDesignator=31 NewDesignator=U3_NeoPixel31
+Change Component Designator: OldDesignator=32 NewDesignator=U3_NeoPixel32
+Change Component Designator: OldDesignator=33 NewDesignator=U3_NeoPixel33
+Change Component Designator: OldDesignator=34 NewDesignator=U3_NeoPixel34
+Change Component Designator: OldDesignator=35 NewDesignator=U3_NeoPixel35
+Change Component Designator: OldDesignator=36 NewDesignator=U3_NeoPixel36
+Change Component Designator: OldDesignator=37 NewDesignator=U3_NeoPixel37
+Change Component Designator: OldDesignator=38 NewDesignator=U3_NeoPixel38
+Change Component Designator: OldDesignator=39 NewDesignator=U3_NeoPixel39
+Change Component Designator: OldDesignator=40 NewDesignator=U3_NeoPixel40
+Change Component Designator: OldDesignator=41 NewDesignator=U3_NeoPixel41
+Change Component Designator: OldDesignator=42 NewDesignator=U3_NeoPixel42
+Change Component Designator: OldDesignator=43 NewDesignator=U3_NeoPixel43
+Change Component Designator: OldDesignator=44 NewDesignator=U3_NeoPixel44
+Change Component Designator: OldDesignator=45 NewDesignator=U3_NeoPixel45
+Change Component Designator: OldDesignator=46 NewDesignator=U3_NeoPixel46
+Change Component Designator: OldDesignator=47 NewDesignator=U3_NeoPixel47
+Change Component Designator: OldDesignator=48 NewDesignator=U3_NeoPixel48
+Change Component Designator: OldDesignator=49 NewDesignator=U3_NeoPixel49
+Change Component Designator: OldDesignator=50 NewDesignator=U3_NeoPixel50
+Change Component Designator: OldDesignator=51 NewDesignator=U3_NeoPixel51
+Change Component Designator: OldDesignator=52 NewDesignator=U3_NeoPixel52
+Change Component Designator: OldDesignator=53 NewDesignator=U3_NeoPixel53
+Change Component Designator: OldDesignator=54 NewDesignator=U3_NeoPixel54
+Change Component Designator: OldDesignator=55 NewDesignator=U3_NeoPixel55
+Change Component Designator: OldDesignator=56 NewDesignator=U3_NeoPixel56
+Change Component Designator: OldDesignator=57 NewDesignator=U3_NeoPixel57
+Change Component Designator: OldDesignator=58 NewDesignator=U3_NeoPixel58
+Change Component Designator: OldDesignator=59 NewDesignator=U3_NeoPixel59
+Change Component Designator: OldDesignator=60 NewDesignator=U3_NeoPixel60
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel1-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel2-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel3-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel4-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel5-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel6-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel7-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel8-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel9-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel10-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel11-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel12-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel13-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel14-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel15-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel16-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel17-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel18-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel19-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel20-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel21-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel22-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel23-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel24-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel25-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel26-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel27-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel28-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel29-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel30-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel31-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel32-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel33-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel34-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel35-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel36-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel37-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel38-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel39-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel40-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel41-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel42-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel43-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel44-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel45-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel46-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel47-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel48-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel49-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel50-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel51-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel52-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel53-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel54-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel55-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel56-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel57-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel58-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel59-3
+Added Pin To Net: NetName=GND Pin=U3_NeoPixel60-3

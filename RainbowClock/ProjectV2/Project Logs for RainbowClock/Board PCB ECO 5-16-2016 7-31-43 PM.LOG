@@ -1,0 +1,25 @@
+Removed Member From Class: ClassName=DB[0..7] Member=DB0
+Removed Member From Class: ClassName=DB[0..7] Member=DB1
+Removed Member From Class: ClassName=DB[0..7] Member=DB2
+Removed Member From Class: ClassName=DB[0..7] Member=DB3
+Removed Member From Class: ClassName=DB[0..7] Member=DB4
+Removed Member From Class: ClassName=DB[0..7] Member=DB5
+Removed Member From Class: ClassName=DB[0..7] Member=DB6
+Removed Member From Class: ClassName=DB[0..7] Member=DB7
+Added Pin To Net: NetName=D0 Pin=U1-8
+Added Pin To Net: NetName=D1 Pin=U1-9
+Added Pin To Net: NetName=D2 Pin=U1-10
+Added Pin To Net: NetName=D3 Pin=U1-11
+Added Pin To Net: NetName=D4 Pin=U1-14
+Added Pin To Net: NetName=D5 Pin=U1-15
+Added Pin To Net: NetName=D6 Pin=U1-25
+Added Pin To Net: NetName=D7 Pin=U1-26
+Change Class Name : Old Net Name=DB[0..7] New Net Name=D[0..7]
+Added Member To Class: ClassName=D[0..7] Member=Element[0]: D
+Added Member To Class: ClassName=D[0..7] Member=Element[1]: D
+Added Member To Class: ClassName=D[0..7] Member=Element[2]: D
+Added Member To Class: ClassName=D[0..7] Member=Element[3]: D
+Added Member To Class: ClassName=D[0..7] Member=Element[4]: D
+Added Member To Class: ClassName=D[0..7] Member=Element[5]: D
+Added Member To Class: ClassName=D[0..7] Member=Element[6]: D
+Added Member To Class: ClassName=D[0..7] Member=Element[7]: D

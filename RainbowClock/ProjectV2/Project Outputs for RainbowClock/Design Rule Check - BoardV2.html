@@ -1,0 +1,781 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : sans-serif;
+			color : white;
+			background-color : #21489e;
+			padding: 0.3em;
+		}
+		body {
+			font-family : verdana;
+		}
+		td, th {
+			padding: 0.5em;
+			text-align : center;
+			width : 18%;
+		}
+		th {
+			background-color : #A6CAF0;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+		}
+		
+		.DRC_summary_header {							
+			padding-bottom : 0.1em;
+			border : 0px solid black;							
+			width: 100%;
+                        align: right;
+                        
+		}
+
+		.DRC_summary_header_col1, 
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3
+		{
+			color : black;
+			font-size:150%;
+                        padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2: 0em;
+			border : 0px solid black;
+			width : auto;
+			vertical-align: top;
+			font-weight: bold;				
+		}
+		
+		.DRC_summary_header_col1 	
+		{		                       
+			text-align: right;
+                        width: auto;	
+		}
+
+		.DRC_summary_header_col2 	
+		{		
+			text-align: center;	
+		}
+
+		.DRC_summary_header_col3 	
+		{		
+			text-align: left;	
+		}
+
+
+		
+		.header_holder
+		{
+		Width = 100%;
+		border = 0px solid green;
+		padding = 0;
+		}
+		
+		
+		
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+                {
+			left:0;
+			top:0;
+			padding-top : 0.1em;			
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top
+
+		}
+		.front_matter {	
+			
+			margin-top: 5px;
+ 			margin-left: 0px;					 			
+ 			horizontal-align: left;
+		}
+				
+		
+		.front_matter_column1 {
+			width : 10em;	
+			text-align  : right;
+			padding-right:0.1em;
+			
+		}
+		
+		.front_matter_column2 {
+                        width: 0.1em;
+			align: center;
+			text-align : center;
+			margin-right  : 0.1em;	
+			margin-left   : 0.1em;
+		}
+		.front_matter_column3 {
+			width         : auto;  
+			text-align    : left;	
+			margin-right  : 0.5em;				
+		}
+		
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : right;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #EEEEE0 
+		}
+		tr.onmouseout_even { 
+			background-color : #F3F3E3   
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : lightYellow
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #008000 
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD14\Templates\AD-rgb_logo_223x64.gif
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td Style="width:70%">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">5/22/2016</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">6:32:11 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">00:00:06</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3"><a href="file:///C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc" class="file"><acronym title="C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc">C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td Style="Width:30%">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3" style="color : red">96</td></tr>
+</table>
+</td>
+</table>
+<hr><a name="IDASAKRC"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAEBKRC">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">7</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAJDKRC">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">6</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDATEKRC">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">13</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDARQKRC">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAXQKRC">Width Constraint (Min=0.254mm) (Max=1mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDA3QKRC">Routing Layers(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDADRKRC">Routing Via (MinHoleWidth=0.711mm) (MaxHoleWidth=0.711mm) (PreferredHoleWidth=0.711mm) (MinWidth=1.27mm) (MaxWidth=1.27mm) (PreferedWidth=1.27mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAJRKRC">Fabrication Testpoint Usage (Valid =One Required, Allow multiple per net=No) (Disabled)(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAPRKRC">Fabrication Testpoint Style (Under Component=Yes) (Disabled)(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAVRKRC">Assembly Testpoint Usage (Valid =One Required, Allow multiple per net=No) (Disabled)(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDA1RKRC">Assembly Testpoint Style (Under Component=Yes) (Disabled)(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDABSKRC">Component Clearance Constraint ( Horizontal Gap = 0.254mm, Vertical Gap = 0.254mm ) (All),(All) </a></td>
+<td class="column2">3</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDACTKRC">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAITKRC">Pads and Vias to follow the Drill pairs settings</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAOTKRC">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">11</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAWVKRC">Differential Pairs Uncoupled Length using the Gap Constraints (Min=0.254mm) (Max=0.254mm) (Prefered=0.254mm)  and Width Constraints (Min=0.381mm) (Max=0.381mm) (Prefered=0.381mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDA2VKRC">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDACWKRC">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">45</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDADTLRC">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDASTLRC">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDA2ULRC">Silk primitive without silk layer</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDA0VLRC">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAGWLRC">Rule</a></td>
+<td class="column2">1</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">96</td>
+</tr>
+</table><br><hr><a name="IDAEBKRC"><table>
+<tr>
+<th style="text-align : left" colspan="2" class="rule">Short-Circuit Constraint (Allowed=No) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True">Track (-0.011mm,-84.93mm)(7.984mm,-80.186mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16620.494mil|Location2.X=16652.133mil|Location1.Y=9264.745mil|Location2.Y=9329.042mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16620.494mil|Location2.X=16652.133mil|Location1.Y=9264.745mil|Location2.Y=9329.042mil|Absolute=True">Track (8.01mm,-80.147mm)(8.313mm,-79.014mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True">Track (-0.011mm,-84.93mm)(7.984mm,-80.186mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16516.156mil|Location2.X=16596.674mil|Location1.Y=9255.87mil|Location2.Y=9380.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16516.156mil|Location2.X=16596.674mil|Location1.Y=9255.87mil|Location2.Y=9380.921mil|Absolute=True">Track (5.359mm,-77.697mm)(6.905mm,-80.373mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True">Track (-0.011mm,-84.93mm)(7.984mm,-80.186mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16597.548mil|Location2.X=16639.819mil|Location1.Y=9250.361mil|Location2.Y=9283.086mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16597.548mil|Location2.X=16639.819mil|Location1.Y=9250.361mil|Location2.Y=9283.086mil|Absolute=True">Track (7.427mm,-80.513mm)(8mm,-80.182mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True">Track (-0.011mm,-84.93mm)(7.984mm,-80.186mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16616.542mil|Location2.X=16887.792mil|Location1.Y=9260.755mil|Location2.Y=9429.008mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16616.542mil|Location2.X=16887.792mil|Location1.Y=9260.755mil|Location2.Y=9429.008mil|Absolute=True">Track (8.009mm,-80.149mm)(14.199mm,-76.575mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16128.605mil|Location2.X=16328.357mil|Location1.Y=9072.509mil|Location2.Y=9199.484mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16128.605mil|Location2.X=16328.357mil|Location1.Y=9072.509mil|Location2.Y=9199.484mil|Absolute=True">Track (-4.384mm,-82.405mm)(-0.011mm,-84.93mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16132.542mil|Location2.X=16196.839mil|Location1.Y=9175.862mil|Location2.Y=9207.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16132.542mil|Location2.X=16196.839mil|Location1.Y=9175.862mil|Location2.Y=9207.5mil|Absolute=True">Track (-4.384mm,-82.405mm)(-3.251mm,-82.101mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16128.605mil|Location2.X=16328.357mil|Location1.Y=9072.509mil|Location2.Y=9199.484mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16128.605mil|Location2.X=16328.357mil|Location1.Y=9072.509mil|Location2.Y=9199.484mil|Absolute=True">Track (-4.384mm,-82.405mm)(-0.011mm,-84.93mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16104.315mil|Location2.X=16156.164mil|Location1.Y=9171.924mil|Location2.Y=9213.507mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16104.315mil|Location2.X=16156.164mil|Location1.Y=9171.924mil|Location2.Y=9213.507mil|Absolute=True">Track (-5.001mm,-82.049mm)(-4.384mm,-82.405mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True">Track (-0.011mm,-84.93mm)(7.984mm,-80.186mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16576.989mil|Location2.X=16617.233mil|Location1.Y=9250.361mil|Location2.Y=9275.555mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16576.989mil|Location2.X=16617.233mil|Location1.Y=9250.361mil|Location2.Y=9275.555mil|Absolute=True">Track (6.905mm,-80.373mm)(7.427mm,-80.513mm)  Top Layer</acronym></a></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDAJDKRC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14823.425mil|Location2.X=15033.638mil|Location1.Y=12137.086mil|Location2.Y=12471.929mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14823.425mil|Location2.X=15033.638mil|Location1.Y=12137.086mil|Location2.Y=12471.929mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Track on layer Bottom Layer (-35.346,-4.9mm) And Track on layer Top Layer (-35.087,-1.475mm)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19105.654mil|Location2.X=19450.433mil|Location1.Y=11612.963mil|Location2.Y=11821.338mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19105.654mil|Location2.X=19450.433mil|Location1.Y=11612.963mil|Location2.Y=11821.338mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Track on layer Top Layer (73.423,-18.213mm) And Pad R5-1 (77.1,-18mm)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13947mil|Location2.X=14237.835mil|Location1.Y=12183.063mil|Location2.Y=12315.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13947mil|Location2.X=14237.835mil|Location1.Y=12183.063mil|Location2.Y=12315.433mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Track on layer Top Layer (-57.607,-3.732mm) And Track on layer Bottom Layer (-55.3,-5.45mm)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16573.189mil|Location2.X=16916.968mil|Location1.Y=12023mil|Location2.Y=12243.583mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16573.189mil|Location2.X=16916.968mil|Location1.Y=12023mil|Location2.Y=12243.583mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P1-16 (9.098,-7.798mm) And Track on layer Bottom Layer (12.75,-7.275mm)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14855.748mil|Location2.X=15322.48mil|Location1.Y=12309.819mil|Location2.Y=12620.551mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14855.748mil|Location2.X=15322.48mil|Location1.Y=12309.819mil|Location2.Y=12620.551mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Track on layer Top Layer (-34.525,-0.513mm) And Via (-27.75,2.3mm)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=19443.016mil|Location1.Y=11701.591mil|Location2.Y=12515.693mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=19443.016mil|Location1.Y=11701.591mil|Location2.Y=12515.693mil|Absolute=True">Un-Routed Net Constraint: Net INT1 Between Pad U1-27 (-51.075,1.825mm) And Pad R5-2 (78.9,-18mm)</acronym></a><br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDATEKRC"><table>
+<tr>
+<th style="text-align : left" colspan="2" class="rule">Clearance Constraint (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19438.052mil|Location2.X=19651.417mil|Location1.Y=12243.189mil|Location2.Y=12442.198mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19438.052mil|Location2.X=19651.417mil|Location1.Y=12243.189mil|Location2.Y=12442.198mil|Absolute=True">Track (79.826mm,-0.19mm)(84.245mm,-4.245mm)  Bottom Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19421.236mil|Location2.X=19507.976mil|Location1.Y=12288.205mil|Location2.Y=12374.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19421.236mil|Location2.X=19507.976mil|Location1.Y=12288.205mil|Location2.Y=12374.945mil|Absolute=True">Pad S1-3(80mm,-2.5mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19440.79mil|Location2.X=19651.417mil|Location1.Y=12414.662mil|Location2.Y=12616.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19440.79mil|Location2.X=19651.417mil|Location1.Y=12414.662mil|Location2.Y=12616.811mil|Absolute=True">Track (79.895mm,0.11mm)(84.245mm,4.245mm)  Bottom Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19421.236mil|Location2.X=19507.976mil|Location1.Y=12485.055mil|Location2.Y=12571.795mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19421.236mil|Location2.X=19507.976mil|Location1.Y=12485.055mil|Location2.Y=12571.795mil|Absolute=True">Pad S1-1(80mm,2.5mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18446.063mil|Location2.X=19417.205mil|Location1.Y=12575.827mil|Location2.Y=12591.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18446.063mil|Location2.X=19417.205mil|Location1.Y=12575.827mil|Location2.Y=12591.575mil|Absolute=True">Track (54.329mm,3.904mm)(78.596mm,3.904mm)  Bottom Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19322.811mil|Location2.X=19409.551mil|Location1.Y=12485.055mil|Location2.Y=12571.795mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19322.811mil|Location2.X=19409.551mil|Location1.Y=12485.055mil|Location2.Y=12571.795mil|Absolute=True">Pad S1-D(77.5mm,2.5mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True">Track (-0.011mm,-84.93mm)(7.984mm,-80.186mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16620.494mil|Location2.X=16652.133mil|Location1.Y=9264.745mil|Location2.Y=9329.042mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16620.494mil|Location2.X=16652.133mil|Location1.Y=9264.745mil|Location2.Y=9329.042mil|Absolute=True">Track (8.01mm,-80.147mm)(8.313mm,-79.014mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True">Track (-0.011mm,-84.93mm)(7.984mm,-80.186mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16516.156mil|Location2.X=16596.674mil|Location1.Y=9255.87mil|Location2.Y=9380.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16516.156mil|Location2.X=16596.674mil|Location1.Y=9255.87mil|Location2.Y=9380.921mil|Absolute=True">Track (5.359mm,-77.697mm)(6.905mm,-80.373mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True">Track (-0.011mm,-84.93mm)(7.984mm,-80.186mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16597.548mil|Location2.X=16639.819mil|Location1.Y=9250.361mil|Location2.Y=9283.086mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16597.548mil|Location2.X=16639.819mil|Location1.Y=9250.361mil|Location2.Y=9283.086mil|Absolute=True">Track (7.427mm,-80.513mm)(8mm,-80.182mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True">Track (-0.011mm,-84.93mm)(7.984mm,-80.186mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16616.542mil|Location2.X=16887.792mil|Location1.Y=9260.755mil|Location2.Y=9429.008mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16616.542mil|Location2.X=16887.792mil|Location1.Y=9260.755mil|Location2.Y=9429.008mil|Absolute=True">Track (8.009mm,-80.149mm)(14.199mm,-76.575mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16128.605mil|Location2.X=16328.357mil|Location1.Y=9072.509mil|Location2.Y=9199.484mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16128.605mil|Location2.X=16328.357mil|Location1.Y=9072.509mil|Location2.Y=9199.484mil|Absolute=True">Track (-4.384mm,-82.405mm)(-0.011mm,-84.93mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16132.542mil|Location2.X=16196.839mil|Location1.Y=9175.862mil|Location2.Y=9207.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16132.542mil|Location2.X=16196.839mil|Location1.Y=9175.862mil|Location2.Y=9207.5mil|Absolute=True">Track (-4.384mm,-82.405mm)(-3.251mm,-82.101mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16128.605mil|Location2.X=16328.357mil|Location1.Y=9072.509mil|Location2.Y=9199.484mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16128.605mil|Location2.X=16328.357mil|Location1.Y=9072.509mil|Location2.Y=9199.484mil|Absolute=True">Track (-4.384mm,-82.405mm)(-0.011mm,-84.93mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16177.154mil|Location2.X=16217.404mil|Location1.Y=9187.815mil|Location2.Y=9243.12mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16177.154mil|Location2.X=16217.404mil|Location1.Y=9187.815mil|Location2.Y=9243.12mil|Absolute=True">Track (-3.251mm,-82.101mm)(-2.729mm,-81.197mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16128.605mil|Location2.X=16328.357mil|Location1.Y=9072.509mil|Location2.Y=9199.484mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16128.605mil|Location2.X=16328.357mil|Location1.Y=9072.509mil|Location2.Y=9199.484mil|Absolute=True">Track (-4.384mm,-82.405mm)(-0.011mm,-84.93mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16104.315mil|Location2.X=16156.164mil|Location1.Y=9171.924mil|Location2.Y=9213.507mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16104.315mil|Location2.X=16156.164mil|Location1.Y=9171.924mil|Location2.Y=9213.507mil|Absolute=True">Track (-5.001mm,-82.049mm)(-4.384mm,-82.405mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16128.605mil|Location2.X=16328.357mil|Location1.Y=9072.509mil|Location2.Y=9199.484mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16128.605mil|Location2.X=16328.357mil|Location1.Y=9072.509mil|Location2.Y=9199.484mil|Absolute=True">Track (-4.384mm,-82.405mm)(-0.011mm,-84.93mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15860.956mil|Location2.X=16131.874mil|Location1.Y=9185.948mil|Location2.Y=9354.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15860.956mil|Location2.X=16131.874mil|Location1.Y=9185.948mil|Location2.Y=9354.011mil|Absolute=True">Track (-11.183mm,-78.48mm)(-5.001mm,-82.049mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16128.605mil|Location2.X=16328.357mil|Location1.Y=9072.509mil|Location2.Y=9199.484mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16128.605mil|Location2.X=16328.357mil|Location1.Y=9072.509mil|Location2.Y=9199.484mil|Absolute=True">Track (-4.384mm,-82.405mm)(-0.011mm,-84.93mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16103.103mil|Location2.X=16127.937mil|Location1.Y=9189.885mil|Location2.Y=9228.785mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16103.103mil|Location2.X=16127.937mil|Location1.Y=9189.885mil|Location2.Y=9228.785mil|Absolute=True">Track (-5.132mm,-81.561mm)(-5.001mm,-82.049mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16300.798mil|Location2.X=16643.107mil|Location1.Y=9072.509mil|Location2.Y=9286.849mil|Absolute=True">Track (-0.011mm,-84.93mm)(7.984mm,-80.186mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16576.989mil|Location2.X=16617.233mil|Location1.Y=9250.361mil|Location2.Y=9275.555mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16576.989mil|Location2.X=16617.233mil|Location1.Y=9250.361mil|Location2.Y=9275.555mil|Absolute=True">Track (6.905mm,-80.373mm)(7.427mm,-80.513mm)  Top Layer</acronym></a></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDABSKRC"><table>
+<tr>
+<th style="text-align : left" colspan="2" class="rule">Component Clearance Constraint ( Horizontal Gap = 0.254mm, Vertical Gap = 0.254mm ) (All),(All) </th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14798.266mil|Location2.X=17845.508mil|Location1.Y=10364.961mil|Location2.Y=12245.654mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14798.266mil|Location2.X=17845.508mil|Location1.Y=10364.961mil|Location2.Y=12245.654mil|Absolute=True">SMT Small Component -Comment (-0.975mm,-28.425mm) on Mechanical 1</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15121.063mil|Location2.X=16748.937mil|Location1.Y=12049.063mil|Location2.Y=12290.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15121.063mil|Location2.X=16748.937mil|Location1.Y=12049.063mil|Location2.Y=12290.981mil|Absolute=True">SIP Component P1-Header 16 (-9.652mm,-7.798mm) on Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15199.843mil|Location2.X=15731.339mil|Location1.Y=12770.551mil|Location2.Y=13231mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15199.843mil|Location2.X=15731.339mil|Location1.Y=12770.551mil|Location2.Y=13231mil|Absolute=True">SMT Small Component -Comment (-28.325mm,19.85mm) on Mechanical 1</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15154.039mil|Location2.X=15774.118mil|Location1.Y=12760.063mil|Location2.Y=12982.855mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15154.039mil|Location2.X=15774.118mil|Location1.Y=12760.063mil|Location2.Y=12982.855mil|Absolute=True">SIP Component P3-Header 6 (-21.488mm,10.008mm) on Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15950.827mil|Location2.X=16570.906mil|Location1.Y=12764.646mil|Location2.Y=14257mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15950.827mil|Location2.X=16570.906mil|Location1.Y=12764.646mil|Location2.Y=14257mil|Absolute=True">SMT Small Component -Comment (-1.4mm,45.9mm) on Mechanical 1</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15950.039mil|Location2.X=16570.118mil|Location1.Y=12760.063mil|Location2.Y=12982.776mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15950.039mil|Location2.X=16570.118mil|Location1.Y=12760.063mil|Location2.Y=12982.776mil|Absolute=True">SIP Component P2-Header 6 (-1.27mm,10.008mm) on Top Layer</acronym></a></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDAOTKRC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19562.273mil|Location2.X=19675.727mil|Location1.Y=10467.273mil|Location2.Y=10580.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19562.273mil|Location2.X=19675.727mil|Location1.Y=10467.273mil|Location2.Y=10580.727mil|Absolute=True">Hole Size Constraint (2.85mm &gt; 2.54mm) : Pad Free-0(83.922mm,-48.412mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16255.273mil|Location2.X=16368.727mil|Location1.Y=8565.273mil|Location2.Y=8678.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16255.273mil|Location2.X=16368.727mil|Location1.Y=8565.273mil|Location2.Y=8678.727mil|Absolute=True">Hole Size Constraint (2.85mm &gt; 2.54mm) : Pad Free-0(-0.076mm,-96.723mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12969.273mil|Location2.X=13082.727mil|Location1.Y=10470.273mil|Location2.Y=10583.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12969.273mil|Location2.X=13082.727mil|Location1.Y=10470.273mil|Location2.Y=10583.727mil|Absolute=True">Hole Size Constraint (2.85mm &gt; 2.54mm) : Pad Free-0(-83.541mm,-48.336mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12969.273mil|Location2.X=13082.727mil|Location1.Y=14277.273mil|Location2.Y=14390.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12969.273mil|Location2.X=13082.727mil|Location1.Y=14277.273mil|Location2.Y=14390.727mil|Absolute=True">Hole Size Constraint (2.85mm &gt; 2.54mm) : Pad Free-0(-83.541mm,48.362mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19555.273mil|Location2.X=19668.727mil|Location1.Y=14281.273mil|Location2.Y=14394.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19555.273mil|Location2.X=19668.727mil|Location1.Y=14281.273mil|Location2.Y=14394.727mil|Absolute=True">Hole Size Constraint (2.85mm &gt; 2.54mm) : Pad Free-0(83.744mm,48.463mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16257.273mil|Location2.X=16370.727mil|Location1.Y=16181.273mil|Location2.Y=16294.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16257.273mil|Location2.X=16370.727mil|Location1.Y=16181.273mil|Location2.Y=16294.727mil|Absolute=True">Hole Size Constraint (2.85mm &gt; 2.54mm) : Pad Free-0(-0.025mm,96.723mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13166.737mil|Location2.X=13305.782mil|Location1.Y=11833.903mil|Location2.Y=11972.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13166.737mil|Location2.X=13305.782mil|Location1.Y=11833.903mil|Location2.Y=11972.948mil|Absolute=True">Hole Size Constraint (3.5mm &gt; 2.54mm) : Pad J2-1(-78.2mm,-13.375mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13060.438mil|Location2.X=13179.798mil|Location1.Y=12036.658mil|Location2.Y=12156.019mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13060.438mil|Location2.X=13179.798mil|Location1.Y=12036.658mil|Location2.Y=12156.019mil|Absolute=True">Hole Size Constraint (3mm &gt; 2.54mm) : Pad J2-2(-81.15mm,-8.475mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12940.359mil|Location2.X=13059.719mil|Location1.Y=11843.745mil|Location2.Y=11963.105mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12940.359mil|Location2.X=13059.719mil|Location1.Y=11843.745mil|Location2.Y=11963.105mil|Absolute=True">Hole Size Constraint (3mm &gt; 2.54mm) : Pad J2-3(-84.2mm,-13.375mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12939.375mil|Location2.X=13068.578mil|Location1.Y=12246.107mil|Location2.Y=12375.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12939.375mil|Location2.X=13068.578mil|Location1.Y=12246.107mil|Location2.Y=12375.31mil|Absolute=True">Hole Size Constraint (3.25mm &gt; 2.54mm) : Pad J1-0(-84.1mm,-3.03mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12939.375mil|Location2.X=13068.578mil|Location1.Y=12646.107mil|Location2.Y=12775.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12939.375mil|Location2.X=13068.578mil|Location1.Y=12646.107mil|Location2.Y=12775.31mil|Absolute=True">Hole Size Constraint (3.25mm &gt; 2.54mm) : Pad J1-0(-84.1mm,7.13mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDACWKRC"><table>
+<tr>
+<th style="text-align : left" colspan="2" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14027.252mil|Location2.X=14066.748mil|Location1.Y=12346.717mil|Location2.Y=12390.149mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14027.252mil|Location2.X=14066.748mil|Location1.Y=12346.717mil|Location2.Y=12390.149mil|Absolute=True">Pad C2-1(-57.607mm,-1.564mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14027.252mil|Location2.X=14066.748mil|Location1.Y=12399.851mil|Location2.Y=12443.283mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14027.252mil|Location2.X=14066.748mil|Location1.Y=12399.851mil|Location2.Y=12443.283mil|Absolute=True">Pad C1-1(-57.607mm,-0.214mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14926.748mil|Location2.X=14984.748mil|Location1.Y=12342.929mil|Location2.Y=12400.929mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14926.748mil|Location2.X=14984.748mil|Location1.Y=12342.929mil|Location2.Y=12400.929mil|Absolute=True">Via (-34.525mm,-1.475mm) Top Layer to Bottom Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14916.252mil|Location2.X=14955.748mil|Location1.Y=12407.851mil|Location2.Y=12451.283mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14916.252mil|Location2.X=14955.748mil|Location1.Y=12407.851mil|Location2.Y=12451.283mil|Absolute=True">Pad C9-1(-35.027mm,-0.011mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14367.102mil|Location2.X=14394.787mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14367.102mil|Location2.X=14394.787mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-34(-49.125mm,-4.925mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14398.598mil|Location2.X=14426.283mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14398.598mil|Location2.X=14426.283mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-35(-48.325mm,-4.925mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14430.094mil|Location2.X=14457.779mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14430.094mil|Location2.X=14457.779mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-36(-47.525mm,-4.925mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14398.598mil|Location2.X=14426.283mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14398.598mil|Location2.X=14426.283mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-35(-48.325mm,-4.925mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14461.59mil|Location2.X=14489.275mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14461.59mil|Location2.X=14489.275mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-37(-46.725mm,-4.925mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14430.094mil|Location2.X=14457.779mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14430.094mil|Location2.X=14457.779mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-36(-47.525mm,-4.925mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14493.086mil|Location2.X=14520.771mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14493.086mil|Location2.X=14520.771mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-38(-45.925mm,-4.925mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14461.59mil|Location2.X=14489.275mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14461.59mil|Location2.X=14489.275mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-37(-46.725mm,-4.925mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14524.582mil|Location2.X=14552.267mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14524.582mil|Location2.X=14552.267mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-39(-45.125mm,-4.925mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14493.086mil|Location2.X=14520.771mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14493.086mil|Location2.X=14520.771mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-38(-45.925mm,-4.925mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14556.078mil|Location2.X=14583.763mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14556.078mil|Location2.X=14583.763mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-40(-44.325mm,-4.925mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14524.582mil|Location2.X=14552.267mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14524.582mil|Location2.X=14552.267mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-39(-45.125mm,-4.925mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14587.575mil|Location2.X=14615.26mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14587.575mil|Location2.X=14615.26mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-41(-43.525mm,-4.925mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14556.078mil|Location2.X=14583.763mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14556.078mil|Location2.X=14583.763mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-40(-44.325mm,-4.925mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14619.071mil|Location2.X=14646.756mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14619.071mil|Location2.X=14646.756mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-42(-42.725mm,-4.925mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14587.575mil|Location2.X=14615.26mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14587.575mil|Location2.X=14615.26mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-41(-43.525mm,-4.925mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14650.567mil|Location2.X=14678.252mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14650.567mil|Location2.X=14678.252mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-43(-41.925mm,-4.925mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14619.071mil|Location2.X=14646.756mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14619.071mil|Location2.X=14646.756mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-42(-42.725mm,-4.925mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14682.063mil|Location2.X=14709.748mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14682.063mil|Location2.X=14709.748mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-44(-41.125mm,-4.925mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14650.567mil|Location2.X=14678.252mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14650.567mil|Location2.X=14678.252mil|Location1.Y=12202.575mil|Location2.Y=12269.63mil|Absolute=True">Pad U1-43(-41.925mm,-4.925mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12582.496mil|Location2.Y=12610.181mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12582.496mil|Location2.Y=12610.181mil|Absolute=True">Pad U1-24(-51.075mm,4.225mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12613.992mil|Location2.Y=12641.677mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12613.992mil|Location2.Y=12641.677mil|Absolute=True">Pad U1-23(-51.075mm,5.025mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12551mil|Location2.Y=12578.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12551mil|Location2.Y=12578.685mil|Absolute=True">Pad U1-25(-51.075mm,3.425mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12582.496mil|Location2.Y=12610.181mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12582.496mil|Location2.Y=12610.181mil|Absolute=True">Pad U1-24(-51.075mm,4.225mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12519.504mil|Location2.Y=12547.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12519.504mil|Location2.Y=12547.189mil|Absolute=True">Pad U1-26(-51.075mm,2.625mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12551mil|Location2.Y=12578.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12551mil|Location2.Y=12578.685mil|Absolute=True">Pad U1-25(-51.075mm,3.425mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14203.039mil|Location2.X=14261.039mil|Location1.Y=12521.079mil|Location2.Y=12579.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14203.039mil|Location2.X=14261.039mil|Location1.Y=12521.079mil|Location2.Y=12579.079mil|Absolute=True">Via (-52.907mm,3.05mm) Top Layer to Bottom Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12551mil|Location2.Y=12578.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12551mil|Location2.Y=12578.685mil|Absolute=True">Pad U1-25(-51.075mm,3.425mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12488.008mil|Location2.Y=12515.693mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12488.008mil|Location2.Y=12515.693mil|Absolute=True">Pad U1-27(-51.075mm,1.825mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12519.504mil|Location2.Y=12547.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12519.504mil|Location2.Y=12547.189mil|Absolute=True">Pad U1-26(-51.075mm,2.625mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14203.039mil|Location2.X=14261.039mil|Location1.Y=12521.079mil|Location2.Y=12579.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14203.039mil|Location2.X=14261.039mil|Location1.Y=12521.079mil|Location2.Y=12579.079mil|Absolute=True">Via (-52.907mm,3.05mm) Top Layer to Bottom Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12519.504mil|Location2.Y=12547.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12519.504mil|Location2.Y=12547.189mil|Absolute=True">Pad U1-26(-51.075mm,2.625mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12456.512mil|Location2.Y=12484.197mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12456.512mil|Location2.Y=12484.197mil|Absolute=True">Pad U1-28(-51.075mm,1.025mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12488.008mil|Location2.Y=12515.693mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12488.008mil|Location2.Y=12515.693mil|Absolute=True">Pad U1-27(-51.075mm,1.825mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12425.016mil|Location2.Y=12452.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12425.016mil|Location2.Y=12452.701mil|Absolute=True">Pad U1-29(-51.075mm,0.225mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12456.512mil|Location2.Y=12484.197mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12456.512mil|Location2.Y=12484.197mil|Absolute=True">Pad U1-28(-51.075mm,1.025mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12393.52mil|Location2.Y=12421.205mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12393.52mil|Location2.Y=12421.205mil|Absolute=True">Pad U1-30(-51.075mm,-0.575mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12425.016mil|Location2.Y=12452.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12425.016mil|Location2.Y=12452.701mil|Absolute=True">Pad U1-29(-51.075mm,0.225mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12362.024mil|Location2.Y=12389.709mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12362.024mil|Location2.Y=12389.709mil|Absolute=True">Pad U1-31(-51.075mm,-1.375mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12393.52mil|Location2.Y=12421.205mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12393.52mil|Location2.Y=12421.205mil|Absolute=True">Pad U1-30(-51.075mm,-0.575mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12330.528mil|Location2.Y=12358.212mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12330.528mil|Location2.Y=12358.212mil|Absolute=True">Pad U1-32(-51.075mm,-2.175mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12362.024mil|Location2.Y=12389.709mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12362.024mil|Location2.Y=12389.709mil|Absolute=True">Pad U1-31(-51.075mm,-1.375mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12299.031mil|Location2.Y=12326.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12299.031mil|Location2.Y=12326.717mil|Absolute=True">Pad U1-33(-51.075mm,-2.975mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12330.528mil|Location2.Y=12358.212mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14270.646mil|Location2.X=14337.701mil|Location1.Y=12330.528mil|Location2.Y=12358.212mil|Absolute=True">Pad U1-32(-51.075mm,-2.175mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12330.528mil|Location2.Y=12358.212mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12330.528mil|Location2.Y=12358.212mil|Absolute=True">Pad U1-2(-39.175mm,-2.175mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12299.031mil|Location2.Y=12326.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12299.031mil|Location2.Y=12326.717mil|Absolute=True">Pad U1-1(-39.175mm,-2.975mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12362.024mil|Location2.Y=12389.709mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12362.024mil|Location2.Y=12389.709mil|Absolute=True">Pad U1-3(-39.175mm,-1.375mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12330.528mil|Location2.Y=12358.212mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12330.528mil|Location2.Y=12358.212mil|Absolute=True">Pad U1-2(-39.175mm,-2.175mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12393.52mil|Location2.Y=12421.205mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12393.52mil|Location2.Y=12421.205mil|Absolute=True">Pad U1-4(-39.175mm,-0.575mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12362.024mil|Location2.Y=12389.709mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12362.024mil|Location2.Y=12389.709mil|Absolute=True">Pad U1-3(-39.175mm,-1.375mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12425.016mil|Location2.Y=12452.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12425.016mil|Location2.Y=12452.701mil|Absolute=True">Pad U1-5(-39.175mm,0.225mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12393.52mil|Location2.Y=12421.205mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12393.52mil|Location2.Y=12421.205mil|Absolute=True">Pad U1-4(-39.175mm,-0.575mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12456.512mil|Location2.Y=12484.197mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12456.512mil|Location2.Y=12484.197mil|Absolute=True">Pad U1-6(-39.175mm,1.025mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12425.016mil|Location2.Y=12452.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12425.016mil|Location2.Y=12452.701mil|Absolute=True">Pad U1-5(-39.175mm,0.225mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12488.008mil|Location2.Y=12515.693mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12488.008mil|Location2.Y=12515.693mil|Absolute=True">Pad U1-7(-39.175mm,1.825mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12456.512mil|Location2.Y=12484.197mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12456.512mil|Location2.Y=12484.197mil|Absolute=True">Pad U1-6(-39.175mm,1.025mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12519.504mil|Location2.Y=12547.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12519.504mil|Location2.Y=12547.189mil|Absolute=True">Pad U1-8(-39.175mm,2.625mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12488.008mil|Location2.Y=12515.693mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12488.008mil|Location2.Y=12515.693mil|Absolute=True">Pad U1-7(-39.175mm,1.825mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12551mil|Location2.Y=12578.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12551mil|Location2.Y=12578.685mil|Absolute=True">Pad U1-9(-39.175mm,3.425mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12519.504mil|Location2.Y=12547.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12519.504mil|Location2.Y=12547.189mil|Absolute=True">Pad U1-8(-39.175mm,2.625mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12582.496mil|Location2.Y=12610.181mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12582.496mil|Location2.Y=12610.181mil|Absolute=True">Pad U1-10(-39.175mm,4.225mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12551mil|Location2.Y=12578.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12551mil|Location2.Y=12578.685mil|Absolute=True">Pad U1-9(-39.175mm,3.425mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12613.992mil|Location2.Y=12641.677mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12613.992mil|Location2.Y=12641.677mil|Absolute=True">Pad U1-11(-39.175mm,5.025mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12582.496mil|Location2.Y=12610.181mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14739.15mil|Location2.X=14806.205mil|Location1.Y=12582.496mil|Location2.Y=12610.181mil|Absolute=True">Pad U1-10(-39.175mm,4.225mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14650.567mil|Location2.X=14678.252mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14650.567mil|Location2.X=14678.252mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-13(-41.925mm,6.975mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14682.063mil|Location2.X=14709.748mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14682.063mil|Location2.X=14709.748mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-12(-41.125mm,6.975mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14398.598mil|Location2.X=14426.283mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14398.598mil|Location2.X=14426.283mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-21(-48.325mm,6.975mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14367.102mil|Location2.X=14394.787mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14367.102mil|Location2.X=14394.787mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-22(-49.125mm,6.975mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14619.071mil|Location2.X=14646.756mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14619.071mil|Location2.X=14646.756mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-14(-42.725mm,6.975mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14650.567mil|Location2.X=14678.252mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14650.567mil|Location2.X=14678.252mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-13(-41.925mm,6.975mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14587.575mil|Location2.X=14615.26mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14587.575mil|Location2.X=14615.26mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-15(-43.525mm,6.975mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14619.071mil|Location2.X=14646.756mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14619.071mil|Location2.X=14646.756mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-14(-42.725mm,6.975mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14556.078mil|Location2.X=14583.763mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14556.078mil|Location2.X=14583.763mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-16(-44.325mm,6.975mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14587.575mil|Location2.X=14615.26mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14587.575mil|Location2.X=14615.26mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-15(-43.525mm,6.975mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14524.582mil|Location2.X=14552.267mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14524.582mil|Location2.X=14552.267mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-17(-45.125mm,6.975mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14556.078mil|Location2.X=14583.763mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14556.078mil|Location2.X=14583.763mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-16(-44.325mm,6.975mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14493.086mil|Location2.X=14520.771mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14493.086mil|Location2.X=14520.771mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-18(-45.925mm,6.975mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14524.582mil|Location2.X=14552.267mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14524.582mil|Location2.X=14552.267mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-17(-45.125mm,6.975mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14461.59mil|Location2.X=14489.275mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14461.59mil|Location2.X=14489.275mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-19(-46.725mm,6.975mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14493.086mil|Location2.X=14520.771mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14493.086mil|Location2.X=14520.771mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-18(-45.925mm,6.975mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14430.094mil|Location2.X=14457.779mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14430.094mil|Location2.X=14457.779mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-20(-47.525mm,6.975mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14461.59mil|Location2.X=14489.275mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14461.59mil|Location2.X=14489.275mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-19(-46.725mm,6.975mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14398.598mil|Location2.X=14426.283mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14398.598mil|Location2.X=14426.283mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-21(-48.325mm,6.975mm)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14430.094mil|Location2.X=14457.779mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14430.094mil|Location2.X=14457.779mil|Location1.Y=12671.079mil|Location2.Y=12738.134mil|Absolute=True">Pad U1-20(-47.525mm,6.975mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14013.362mil|Location2.X=14071.362mil|Location1.Y=12656.906mil|Location2.Y=12714.906mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14013.362mil|Location2.X=14071.362mil|Location1.Y=12656.906mil|Location2.Y=12714.906mil|Absolute=True">Via (-57.725mm,6.5mm) Top Layer to Bottom Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14068.48mil|Location2.X=14126.48mil|Location1.Y=12694.307mil|Location2.Y=12752.307mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14068.48mil|Location2.X=14126.48mil|Location1.Y=12694.307mil|Location2.Y=12752.307mil|Absolute=True">Via (-56.325mm,7.45mm) Top Layer to Bottom Layer</acronym></a></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDADTLRC"><table>
+<tr>
+<th style="text-align : left" colspan="2" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19422.185mil|Location2.X=19502.165mil|Location1.Y=13126.135mil|Location2.Y=13246.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19422.185mil|Location2.X=19502.165mil|Location1.Y=13126.135mil|Location2.Y=13246.102mil|Absolute=True">Text "R6" (80.7mm,20.475mm)  Bottom Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19494.465mil|Location2.X=19573.331mil|Location1.Y=13158.284mil|Location2.Y=13237.15mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19494.465mil|Location2.X=19573.331mil|Location1.Y=13158.284mil|Location2.Y=13237.15mil|Absolute=True">Pad S3-0(81.76mm,19.5mm)  Multi-Layer</acronym></a></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDASTLRC"><table>
+<tr>
+<th style="text-align : left" colspan="2" class="rule">Silk to Silk (Clearance=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19597.749mil|Location2.X=19717.716mil|Location1.Y=11967.244mil|Location2.Y=12047.225mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19597.749mil|Location2.X=19717.716mil|Location1.Y=11967.244mil|Location2.Y=12047.225mil|Absolute=True">Text "S2" (86.175mm,-11.5mm)  Bottom Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19578.78mil|Location2.X=19726.654mil|Location1.Y=11956.142mil|Location2.Y=11964.016mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19578.78mil|Location2.X=19726.654mil|Location1.Y=11956.142mil|Location2.Y=11964.016mil|Absolute=True">Track (83mm,-11.936mm)(86.556mm,-11.936mm)  Bottom Overlay</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19422.185mil|Location2.X=19502.165mil|Location1.Y=13126.135mil|Location2.Y=13246.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19422.185mil|Location2.X=19502.165mil|Location1.Y=13126.135mil|Location2.Y=13246.102mil|Absolute=True">Text "R6" (80.7mm,20.475mm)  Bottom Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19470.512mil|Location2.X=19478.386mil|Location1.Y=12898.504mil|Location2.Y=13221.339mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19470.512mil|Location2.X=19478.386mil|Location1.Y=12898.504mil|Location2.Y=13221.339mil|Absolute=True">Track (80.25mm,12mm)(80.25mm,20mm)  Bottom Overlay</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19422.185mil|Location2.X=19502.165mil|Location1.Y=13126.135mil|Location2.Y=13246.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19422.185mil|Location2.X=19502.165mil|Location1.Y=13126.135mil|Location2.Y=13246.102mil|Absolute=True">Text "R6" (80.7mm,20.475mm)  Bottom Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19470.512mil|Location2.X=19488.228mil|Location1.Y=13213.465mil|Location2.Y=13221.339mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19470.512mil|Location2.X=19488.228mil|Location1.Y=13213.465mil|Location2.Y=13221.339mil|Absolute=True">Track (80.25mm,20mm)(80.5mm,20mm)  Bottom Overlay</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14070.019mil|Location2.X=14150mil|Location1.Y=12275mil|Location2.Y=12394.968mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14070.019mil|Location2.X=14150mil|Location1.Y=12275mil|Location2.Y=12394.968mil|Absolute=True">Text "C2" (-55.245mm,-3.683mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14148.563mil|Location2.X=14228.543mil|Location1.Y=12276.299mil|Location2.Y=12396.267mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14148.563mil|Location2.X=14228.543mil|Location1.Y=12276.299mil|Location2.Y=12396.267mil|Absolute=True">Text "C5" (-53.25mm,-3.65mm)  Top Overlay</acronym></a></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDA2ULRC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk primitive without silk layer</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12746.175mil|Location2.X=12990.895mil|Location1.Y=11972.396mil|Location2.Y=12188.785mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12746.175mil|Location2.X=12990.895mil|Location1.Y=11972.396mil|Location2.Y=12188.785mil|Absolute=True">Silk To Board Region Clearance (Out of silkscreen region) : Track (-91.9mm,-8.875mm)(-83.9mm,-8.875mm)  Bottom Overlay</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12788.826mil|Location2.X=13204.149mil|Location1.Y=11532.763mil|Location2.Y=11919.756mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12788.826mil|Location2.X=13204.149mil|Location1.Y=11532.763mil|Location2.Y=11919.756mil|Absolute=True">Silk To Board Region Clearance (Out of silkscreen region) : Track (-91.9mm,-17.875mm)(-77.4mm,-17.875mm)  Bottom Overlay</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12693.682mil|Location2.X=12728.428mil|Location1.Y=11900.217mil|Location2.Y=11906.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12693.682mil|Location2.X=12728.428mil|Location1.Y=11900.217mil|Location2.Y=11906.633mil|Absolute=True">Silk To Board Region Clearance (Out of silkscreen region) : Track (-91.9mm,-17.875mm)(-91.9mm,-8.875mm)  Bottom Overlay</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20397.698mil|Location2.X=20433.861mil|Location1.Y=12426.083mil|Location2.Y=12433.917mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20397.698mil|Location2.X=20433.861mil|Location1.Y=12426.083mil|Location2.Y=12433.917mil|Absolute=True">Silk To Board Region Clearance (Out of silkscreen region) : Track (103.8mm,-2.5mm)(103.8mm,2.5mm)  Bottom Overlay</acronym></a><br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDA0VLRC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15189.98mil|Location2.X=15265.816mil|Location1.Y=12488.051mil|Location2.Y=12610.007mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15189.98mil|Location2.X=15265.816mil|Location1.Y=12488.051mil|Location2.Y=12610.007mil|Absolute=True">Net Antennae: Via (-27.75mm,2.3mm) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDAGWLRC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Rule</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12905.551mil|Location2.X=19724.449mil|Location1.Y=8492.992mil|Location2.Y=16367.008mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\bocal\Desktop\vchesnea\RainbowClock\ProjectV2\Shematics\BoardV2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12905.551mil|Location2.X=19724.449mil|Location1.Y=8492.992mil|Location2.Y=16367.008mil|Absolute=True">Unpoured Polygon: Polygon  (GND Pour)  on Bottom Layer</acronym></a><br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br></body>
+</html>

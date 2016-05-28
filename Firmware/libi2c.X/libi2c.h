@@ -21,7 +21,7 @@ void        libi2c_enable(I2C_MODULE id, e_mode mode);
 void        libi2c_disable(I2C_MODULE id);
 
 I2C_RESULT  libi2c_write(I2C_MODULE id, UINT8 addr, UINT8* data, UINT32 n);
-I2C_RESULT  libi2c_read(I2C_MODULE id, UINT8 addr, UINT8 reg, UINT8* data);
+I2C_RESULT  libi2c_read(I2C_MODULE id, UINT8 addr, UINT8 reg, UINT8* data, UINT32 n);
 
 void        _libi2c_start(I2C_MODULE id);
 void        _libi2c_stop(I2C_MODULE id);

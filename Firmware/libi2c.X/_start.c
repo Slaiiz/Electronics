@@ -10,6 +10,7 @@
 void    _libi2c_start(I2C_MODULE id)
 {
     while (!I2CBusIsIdle(id));
-    while (I2CStart(id) == I2C_MASTER_BUS_COLLISION)
+    while (I2CStart(id) == I2C_MASTER_BUS_COLLISION) {
         I2CStop(id);
+    }
 }

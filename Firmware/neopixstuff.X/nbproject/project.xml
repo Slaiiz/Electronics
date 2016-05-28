@@ -12,7 +12,9 @@
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects>
                 <make-dep-project>../libi2c.X</make-dep-project>
+                <make-dep-project>../Nouveau/liblcd.X</make-dep-project>
                 <make-dep-project>../libneopixels.X</make-dep-project>
+                <make-dep-project>../libserial.X</make-dep-project>
             </make-dep-projects>
         </data>
     </configuration>

@@ -1,0 +1,28 @@
+Added Component: Designator=R1(RES0603)
+Added Component: Designator=R2(RES0603)
+Added Component: Designator=R4(RES0603)
+Added Component: Designator=R5(RES0603)
+Added Component: Designator=R6(RES0603)
+Added Component: Designator=R8(RES0603)
+Added Component: Designator=R9(RES0603)
+Added Pin To Net: NetName=INT0 Pin=R1-1
+Added Pin To Net: NetName=GND Pin=R1-2
+Added Pin To Net: NetName=GND Pin=R2-1
+Added Pin To Net: NetName=INT3 Pin=R2-2
+Added Pin To Net: NetName=MCLR Pin=R4-1
+Added Pin To Net: NetName=V3P3 Pin=R4-2
+Added Pin To Net: NetName=GND Pin=R5-1
+Added Pin To Net: NetName=INT1 Pin=R5-2
+Added Pin To Net: NetName=GND Pin=R6-1
+Added Pin To Net: NetName=INT2 Pin=R6-2
+Added Pin To Net: NetName=V3P3 Pin=R8-1
+Added Pin To Net: NetName=CSB Pin=R8-2
+Added Pin To Net: NetName=GND Pin=R9-1
+Added Pin To Net: NetName=SDO Pin=R9-2
+Added Member To Class: ClassName=RainbowClock Member=Component R1 1K
+Added Member To Class: ClassName=RainbowClock Member=Component R2 1K
+Added Member To Class: ClassName=RainbowClock Member=Component R4 4.7K
+Added Member To Class: ClassName=RainbowClock Member=Component R5 4.7K
+Added Member To Class: ClassName=RainbowClock Member=Component R6 4.7K
+Added Member To Class: ClassName=TEMPERATURE Member=Component R8 1K
+Added Member To Class: ClassName=TEMPERATURE Member=Component R9 1K

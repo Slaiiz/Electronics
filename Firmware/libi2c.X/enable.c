@@ -22,7 +22,7 @@ void    libi2c_enable(I2C_MODULE id, e_mode mode)
 {
     UINT32  freq;
 
-    freq = 8000000; // Assumes a 8MHz clock, change to your liking
+    freq = 8000000; // Assumes a 8MHz oscillator, change to your liking
     switch (OSCCONbits.COSC) {
         case 0b001: // FRCPLL
         case 0b011: // PRIPLL

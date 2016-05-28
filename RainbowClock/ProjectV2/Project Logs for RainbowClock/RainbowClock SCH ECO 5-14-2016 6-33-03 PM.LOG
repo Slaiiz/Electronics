@@ -1,0 +1,54 @@
+Remove Pin=J1-4 From Net=PGED
+Remove Pin=J1-5 From Net=PGEC
+Remove Pin=U2-1 From Net=GND
+Remove Pin=U2-2 From Net=V5
+Remove Pin=U2-3 From Net=V0
+Remove Pin=U2-4 From Net=RS
+Remove Pin=U2-5 From Net=GND
+Remove Pin=U2-6 From Net=E
+Remove Pin=U2-7 From Net=D0
+Remove Pin=U2-8 From Net=D1
+Remove Pin=U2-9 From Net=D2
+Remove Pin=U2-10 From Net=D3
+Remove Pin=U2-11 From Net=D4
+Remove Pin=U2-12 From Net=D5
+Remove Pin=U2-13 From Net=D6
+Remove Pin=U2-14 From Net=D7
+Remove Pin=U2-15 From Net=LED+
+Remove Pin=U2-16 From Net=GND
+Remove Pin=U4-2 From Net=RX
+Remove Pin=U4-3 From Net=TX
+Remove Pin=U4-4 From Net=GND
+Remove Pin=U4-5 From Net=V3P3
+Remove Pin=U5-1 From Net=V3P3
+Remove Pin=U5-2 From Net=GND
+Remove Pin=U5-3 From Net=SCL
+Remove Pin=U5-4 From Net=SDA
+Remove Pin=U5-5 From Net=CSB
+Remove Pin=U5-6 From Net=SDO
+Change Pin Designator/Name:  Old Designator=P1-1 Old Name=1 New Designator =1 New Name=1
+Change Pin Designator/Name:  Old Designator=P1-2 Old Name=2 New Designator =2 New Name=2
+Change Pin Designator/Name:  Old Designator=P1-3 Old Name=3 New Designator =3 New Name=3
+Change Pin Designator/Name:  Old Designator=P1-4 Old Name=4 New Designator =4 New Name=4
+Change Pin Designator/Name:  Old Designator=P1-5 Old Name=5 New Designator =5 New Name=5
+Change Pin Designator/Name:  Old Designator=P1-6 Old Name=6 New Designator =6 New Name=6
+Change Pin Designator/Name:  Old Designator=P1-7 Old Name=7 New Designator =7 New Name=7
+Change Pin Designator/Name:  Old Designator=P1-8 Old Name=8 New Designator =8 New Name=8
+Change Pin Designator/Name:  Old Designator=P1-9 Old Name=9 New Designator =9 New Name=9
+Change Pin Designator/Name:  Old Designator=P1-10 Old Name=10 New Designator =10 New Name=10
+Change Pin Designator/Name:  Old Designator=P1-11 Old Name=11 New Designator =11 New Name=11
+Change Pin Designator/Name:  Old Designator=P1-12 Old Name=12 New Designator =12 New Name=12
+Change Pin Designator/Name:  Old Designator=P1-13 Old Name=13 New Designator =13 New Name=13
+Change Pin Designator/Name:  Old Designator=P1-14 Old Name=14 New Designator =14 New Name=14
+Change Pin Designator/Name:  Old Designator=P1-15 Old Name=15 New Designator =15 New Name=15
+Change Pin Designator/Name:  Old Designator=P1-16 Old Name=16 New Designator =16 New Name=16
+Change Pin Designator/Name:  Old Designator=P2-2 Old Name=2 New Designator =2 New Name=2
+Change Pin Designator/Name:  Old Designator=P2-3 Old Name=3 New Designator =3 New Name=3
+Change Pin Designator/Name:  Old Designator=P2-4 Old Name=4 New Designator =4 New Name=4
+Change Pin Designator/Name:  Old Designator=P2-5 Old Name=5 New Designator =5 New Name=5
+Change Pin Designator/Name:  Old Designator=P3-1 Old Name=1 New Designator =1 New Name=1
+Change Pin Designator/Name:  Old Designator=P3-2 Old Name=2 New Designator =2 New Name=2
+Change Pin Designator/Name:  Old Designator=P3-3 Old Name=3 New Designator =3 New Name=3
+Change Pin Designator/Name:  Old Designator=P3-4 Old Name=4 New Designator =4 New Name=4
+Change Pin Designator/Name:  Old Designator=P3-5 Old Name=5 New Designator =5 New Name=5
+Change Pin Designator/Name:  Old Designator=P3-6 Old Name=6 New Designator =6 New Name=6

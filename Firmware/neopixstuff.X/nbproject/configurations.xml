@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>rainbowclock.h</itemPath>
       <itemPath>confbits.h</itemPath>
+      <itemPath>types.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -76,6 +77,40 @@
                             DD="dist/default/debug/libi2c.X.">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../libserial.X"
+                            CT="3"
+                            CN="default"
+                            AC="true"
+                            BL="true"
+                            WD="../libserial.X"
+                            BC="${MAKE}  -f Makefile CONF=default"
+                            DBC="${MAKE}  -f Makefile CONF=default TYPE_IMAGE=DEBUG_RUN"
+                            CC="rm -rf &quot;build/default&quot; &quot;dist/default&quot;"
+                            OP="dist/default/production/libserial.X.a"
+                            DOP="dist/default/debug/libserial.X.a"
+                            FL="dist/default/production/libserial.X.a"
+                            PD="dist/default/production/libserial.X."
+                            DD="dist/default/debug/libserial.X.">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Nouveau/liblcd.X"
+                            CT="3"
+                            CN="default"
+                            AC="true"
+                            BL="true"
+                            WD="../Nouveau/liblcd.X"
+                            BC="${MAKE}  -f Makefile CONF=default"
+                            DBC="${MAKE}  -f Makefile CONF=default TYPE_IMAGE=DEBUG_RUN"
+                            CC="rm -rf &quot;build/default&quot; &quot;dist/default&quot;"
+                            OP="dist/default/production/liblcd.X.a"
+                            DOP="dist/default/debug/liblcd.X.a"
+                            FL="dist/default/production/liblcd.X.a"
+                            PD="dist/default/production/liblcd.X."
+                            DD="dist/default/debug/liblcd.X.">
+              </makeArtifact>
+            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -102,7 +137,8 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
-        <property key="extra-include-directories" value="..\libneopixels.X;..\libi2c.X"/>
+        <property key="extra-include-directories"
+                  value="..\libneopixels.X;..\libi2c.X;..\Nouveau\liblcd.X"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="false"/>
@@ -197,7 +233,8 @@
         <property key="use-indirect-calls" value="false"/>
       </C32CPP>
       <C32Global>
-        <property key="common-include-directories" value=""/>
+        <property key="common-include-directories"
+                  value="..\libneopixels.X;..\liblcd.X;..\libserial.X"/>
         <property key="gp-relative-option" value=""/>
         <property key="legacy-libc" value="false"/>
         <property key="relaxed-math" value="false"/>

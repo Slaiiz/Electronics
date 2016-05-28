@@ -1,0 +1,16 @@
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 4:30:16 PM On 5/21/2016
+
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of PCB Document [Board.PcbDoc]
+   Generated File[Board.RUL]
+   Generated File[Board.EXTREP]
+   Generated File[Board.REP]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 4:30:16 PM On 5/21/2016
