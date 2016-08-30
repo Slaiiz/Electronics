@@ -8,6 +8,7 @@
 #ifndef LIBI2C_H
 #define	LIBI2C_H
 
+<<<<<<< HEAD
 #include <xc.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -20,11 +21,16 @@ typedef enum {
     I2C1,
     I2C2
 } e_i2c;
+=======
+#include <GenericTypeDefs.h>
+#include <peripheral/i2c.h>
+>>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 
 typedef enum {
     STANDARD  =  100000,
     FAST      =  400000,
     HIGHSPEED = 1000000
+<<<<<<< HEAD
 } e_i2cmode;
 
 /* Type definitions */
@@ -63,3 +69,18 @@ bool    _libi2c_start(e_i2c id);
 void    _libi2c_stop(e_i2c id);
 
 #endif
+=======
+} e_mode;
+
+void        libi2c_enable(I2C_MODULE id, e_mode mode);
+void        libi2c_disable(I2C_MODULE id);
+
+I2C_RESULT  libi2c_write(I2C_MODULE id, UINT8 addr, UINT8* data, UINT32 n);
+I2C_RESULT  libi2c_read(I2C_MODULE id, UINT8 addr, UINT8 reg, UINT8* data);
+
+void        _libi2c_start(I2C_MODULE id);
+void        _libi2c_stop(I2C_MODULE id);
+I2C_RESULT  _libi2c_send(I2C_MODULE id, UINT32 byte);
+
+#endif	/* LIBI2C_H */
+>>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b

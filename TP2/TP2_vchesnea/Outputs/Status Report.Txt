@@ -1,0 +1,14 @@
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 3:22:01 PM On 2/9/2016
+
+Output: Bill of Materials
+Type  : BOM
+From  : Variant [[No Variations]] of Project [TP2_vchesnea.PrjPcb]
+   Generated File[Bill of Materials-TP2_vchesnea.xlsx]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 3:22:09 PM On 2/9/2016

@@ -1,0 +1,13 @@
+Change Component Designator: OldDesignator=LED0 NewDesignator=D1_LED0
+Change Component Designator: OldDesignator=LED1 NewDesignator=D1_LED1
+Change Component Designator: OldDesignator=LED2 NewDesignator=D1_LED2
+Change Component Designator: OldDesignator=LED3 NewDesignator=D1_LED3
+Change Component Designator: OldDesignator=R2 NewDesignator=R2_LED0
+Change Component Designator: OldDesignator=R2 NewDesignator=R2_LED1
+Change Component Designator: OldDesignator=R2 NewDesignator=R2_LED2
+Change Component Designator: OldDesignator=R2 NewDesignator=R2_LED3
+Added Member To Class: ClassName=LED0 Member=Component D1_LED0 (D1) Green LED
+Added Member To Class: ClassName=LED0 Member=Component R2_LED0 (R2) 330?
+Added Member To Class: ClassName=LED1 Member=Component R2_LED1 (R2) 330?
+Added Member To Class: ClassName=LED2 Member=Component R2_LED2 (R2) 330?
+Added Member To Class: ClassName=LED3 Member=Component R2_LED3 (R2) 330?

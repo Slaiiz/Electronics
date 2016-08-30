@@ -71,12 +71,20 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
+<<<<<<< HEAD
         <property key="extra-include-directories" value="..\libsys.X"/>
+=======
+        <property key="extra-include-directories" value=""/>
+>>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="false"/>
         <property key="make-warnings-into-errors" value="false"/>
+<<<<<<< HEAD
         <property key="optimization-level" value="-O1"/>
+=======
+        <property key="optimization-level" value=""/>
+>>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
         <property key="place-data-into-section" value="false"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
@@ -155,6 +163,7 @@
         <property key="save-temps" value="false"/>
         <property key="wpo-lto" value="false"/>
       </C32Global>
+<<<<<<< HEAD
       <ICD3PlatformTool>
         <property key="ADC 1" value="true"/>
         <property key="AutoSelectMemRanges" value="auto"/>
@@ -224,6 +233,8 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
       </ICD3PlatformTool>
+=======
+>>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
     </conf>
   </confs>
 </configurationDescriptor>
