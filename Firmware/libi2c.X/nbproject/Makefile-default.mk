@@ -98,142 +98,86 @@ ${OBJECTDIR}/_stop.o: _stop.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/_stop.o.d 
 	@${RM} ${OBJECTDIR}/_stop.o 
-<<<<<<< HEAD
 	@${FIXDEPS} "${OBJECTDIR}/_stop.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../libsys.X" -MMD -MF "${OBJECTDIR}/_stop.o.d" -o ${OBJECTDIR}/_stop.o _stop.c   
-=======
-	@${FIXDEPS} "${OBJECTDIR}/_stop.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_stop.o.d" -o ${OBJECTDIR}/_stop.o _stop.c   
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 	
 ${OBJECTDIR}/_start.o: _start.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/_start.o.d 
 	@${RM} ${OBJECTDIR}/_start.o 
-<<<<<<< HEAD
 	@${FIXDEPS} "${OBJECTDIR}/_start.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../libsys.X" -MMD -MF "${OBJECTDIR}/_start.o.d" -o ${OBJECTDIR}/_start.o _start.c   
-=======
-	@${FIXDEPS} "${OBJECTDIR}/_start.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_start.o.d" -o ${OBJECTDIR}/_start.o _start.c   
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 	
 ${OBJECTDIR}/_send.o: _send.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/_send.o.d 
 	@${RM} ${OBJECTDIR}/_send.o 
-<<<<<<< HEAD
 	@${FIXDEPS} "${OBJECTDIR}/_send.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../libsys.X" -MMD -MF "${OBJECTDIR}/_send.o.d" -o ${OBJECTDIR}/_send.o _send.c   
-=======
-	@${FIXDEPS} "${OBJECTDIR}/_send.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_send.o.d" -o ${OBJECTDIR}/_send.o _send.c   
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 	
 ${OBJECTDIR}/enable.o: enable.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/enable.o.d 
 	@${RM} ${OBJECTDIR}/enable.o 
-<<<<<<< HEAD
 	@${FIXDEPS} "${OBJECTDIR}/enable.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../libsys.X" -MMD -MF "${OBJECTDIR}/enable.o.d" -o ${OBJECTDIR}/enable.o enable.c   
-=======
-	@${FIXDEPS} "${OBJECTDIR}/enable.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/enable.o.d" -o ${OBJECTDIR}/enable.o enable.c   
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 	
 ${OBJECTDIR}/disable.o: disable.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/disable.o.d 
 	@${RM} ${OBJECTDIR}/disable.o 
-<<<<<<< HEAD
 	@${FIXDEPS} "${OBJECTDIR}/disable.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../libsys.X" -MMD -MF "${OBJECTDIR}/disable.o.d" -o ${OBJECTDIR}/disable.o disable.c   
-=======
-	@${FIXDEPS} "${OBJECTDIR}/disable.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/disable.o.d" -o ${OBJECTDIR}/disable.o disable.c   
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 	
 ${OBJECTDIR}/write.o: write.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/write.o.d 
 	@${RM} ${OBJECTDIR}/write.o 
-<<<<<<< HEAD
 	@${FIXDEPS} "${OBJECTDIR}/write.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../libsys.X" -MMD -MF "${OBJECTDIR}/write.o.d" -o ${OBJECTDIR}/write.o write.c   
-=======
-	@${FIXDEPS} "${OBJECTDIR}/write.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/write.o.d" -o ${OBJECTDIR}/write.o write.c   
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 	
 ${OBJECTDIR}/read.o: read.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/read.o.d 
 	@${RM} ${OBJECTDIR}/read.o 
-<<<<<<< HEAD
 	@${FIXDEPS} "${OBJECTDIR}/read.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../libsys.X" -MMD -MF "${OBJECTDIR}/read.o.d" -o ${OBJECTDIR}/read.o read.c   
-=======
-	@${FIXDEPS} "${OBJECTDIR}/read.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/read.o.d" -o ${OBJECTDIR}/read.o read.c   
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 	
 else
 ${OBJECTDIR}/_stop.o: _stop.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/_stop.o.d 
 	@${RM} ${OBJECTDIR}/_stop.o 
-<<<<<<< HEAD
 	@${FIXDEPS} "${OBJECTDIR}/_stop.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../libsys.X" -MMD -MF "${OBJECTDIR}/_stop.o.d" -o ${OBJECTDIR}/_stop.o _stop.c   
-=======
-	@${FIXDEPS} "${OBJECTDIR}/_stop.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_stop.o.d" -o ${OBJECTDIR}/_stop.o _stop.c   
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 	
 ${OBJECTDIR}/_start.o: _start.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/_start.o.d 
 	@${RM} ${OBJECTDIR}/_start.o 
-<<<<<<< HEAD
 	@${FIXDEPS} "${OBJECTDIR}/_start.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../libsys.X" -MMD -MF "${OBJECTDIR}/_start.o.d" -o ${OBJECTDIR}/_start.o _start.c   
-=======
-	@${FIXDEPS} "${OBJECTDIR}/_start.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_start.o.d" -o ${OBJECTDIR}/_start.o _start.c   
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 	
 ${OBJECTDIR}/_send.o: _send.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/_send.o.d 
 	@${RM} ${OBJECTDIR}/_send.o 
-<<<<<<< HEAD
 	@${FIXDEPS} "${OBJECTDIR}/_send.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../libsys.X" -MMD -MF "${OBJECTDIR}/_send.o.d" -o ${OBJECTDIR}/_send.o _send.c   
-=======
-	@${FIXDEPS} "${OBJECTDIR}/_send.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_send.o.d" -o ${OBJECTDIR}/_send.o _send.c   
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 	
 ${OBJECTDIR}/enable.o: enable.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/enable.o.d 
 	@${RM} ${OBJECTDIR}/enable.o 
-<<<<<<< HEAD
 	@${FIXDEPS} "${OBJECTDIR}/enable.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../libsys.X" -MMD -MF "${OBJECTDIR}/enable.o.d" -o ${OBJECTDIR}/enable.o enable.c   
-=======
-	@${FIXDEPS} "${OBJECTDIR}/enable.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/enable.o.d" -o ${OBJECTDIR}/enable.o enable.c   
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 	
 ${OBJECTDIR}/disable.o: disable.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/disable.o.d 
 	@${RM} ${OBJECTDIR}/disable.o 
-<<<<<<< HEAD
 	@${FIXDEPS} "${OBJECTDIR}/disable.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../libsys.X" -MMD -MF "${OBJECTDIR}/disable.o.d" -o ${OBJECTDIR}/disable.o disable.c   
-=======
-	@${FIXDEPS} "${OBJECTDIR}/disable.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/disable.o.d" -o ${OBJECTDIR}/disable.o disable.c   
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 	
 ${OBJECTDIR}/write.o: write.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/write.o.d 
 	@${RM} ${OBJECTDIR}/write.o 
-<<<<<<< HEAD
 	@${FIXDEPS} "${OBJECTDIR}/write.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../libsys.X" -MMD -MF "${OBJECTDIR}/write.o.d" -o ${OBJECTDIR}/write.o write.c   
-=======
-	@${FIXDEPS} "${OBJECTDIR}/write.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/write.o.d" -o ${OBJECTDIR}/write.o write.c   
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 	
 ${OBJECTDIR}/read.o: read.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/read.o.d 
 	@${RM} ${OBJECTDIR}/read.o 
-<<<<<<< HEAD
 	@${FIXDEPS} "${OBJECTDIR}/read.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../libsys.X" -MMD -MF "${OBJECTDIR}/read.o.d" -o ${OBJECTDIR}/read.o read.c   
-=======
-	@${FIXDEPS} "${OBJECTDIR}/read.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/read.o.d" -o ${OBJECTDIR}/read.o read.c   
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 	
 endif
 

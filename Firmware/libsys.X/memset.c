@@ -2,7 +2,7 @@
 
 /* Attempt at drastically reducing our code size */
 
-void    libsys_memset(void *b, uint32_t c, uint32_t n)
+void libsys_memset(void *b, uint32_t c, uint32_t n)
 {
     asm volatile (           "\n"
     "    .set noreorder"     "\n"

@@ -2,8 +2,8 @@
 
 uint32_t libuart_gets(e_uart id, uint8_t **in)
 {
-    uint32_t       size, len, i, time;
-    uint8_t         *old, *new;
+    uint32_t    size, len, i, time;
+    uint8_t     *old, *new;
 
     size = 0; len = 0; i = 0; time = 0;
     while (time < 10000) {

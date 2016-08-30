@@ -1,6 +1,6 @@
 #include "libuart.h"
 
-bool    libuart_available(e_uart id)
+bool libuart_available(e_uart id)
 {
     s_uart  *uart = (s_uart*)_uart_base[id];
 

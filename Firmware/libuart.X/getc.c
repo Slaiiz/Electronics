@@ -1,6 +1,6 @@
 #include "libuart.h"
 
-bool    libuart_getc(e_uart id, uint8_t *in)
+bool libuart_getc(e_uart id, uint8_t *in)
 {
     s_uart  *uart = (s_uart*)_uart_base[id];
 

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include "libi2c.h"
 
 bool    _libi2c_send(e_i2c id, uint8_t byte)
@@ -11,26 +10,4 @@ bool    _libi2c_send(e_i2c id, uint8_t byte)
         return (false);
     while (i2c->stat.reg & _I2C1STAT_TRSTAT_MASK);
     return (!(i2c->stat.reg & _I2C1STAT_ACKSTAT_MASK));
-=======
-/*
- * File:   send.c
- * Author: vchesnea
- *
- * Created on April 28, 2016, 1:41 PM
- */
-
-#include "libi2c.h"
-
-I2C_RESULT  _libi2c_send(I2C_MODULE id, UINT32 byte)
-{
-    I2C_RESULT  error;
-
-    while (!I2CTransmitterIsReady(id));
-    if ((error = I2CSendByte(id, byte)) != I2C_SUCCESS)
-        return (error);
-    while (!I2CTransmissionHasCompleted(id));
-    if (!I2CByteWasAcknowledged(id))
-        return (I2C_ERROR);
-    return (I2C_SUCCESS);
->>>>>>> ea9453d994e05eef8d2313677149b43b0a164d7b
 }

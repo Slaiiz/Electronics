@@ -1,6 +1,6 @@
 #include "libuart.h"
 
-bool    libuart_begin(e_uart id, uint16_t speed)
+bool libuart_begin(e_uart id, uint16_t speed)
 {
     s_uart  *uart = (s_uart*)_uart_base[id];
 

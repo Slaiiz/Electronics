@@ -2,7 +2,7 @@
 
 /* Attempt at drastically reducing our code size */
 
-void    libsys_memcpy(void *a, void *b, uint32_t n)
+void libsys_memcpy(void *a, void *b, uint32_t n)
 {
     asm volatile (           "\n"
     "    .set noreorder"     "\n"

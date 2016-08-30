@@ -2,7 +2,7 @@
 
 /* Attempt at drastically reducing our code size */
 
-uint32_t    libsys_strlen(uint8_t const *s)
+uint32_t libsys_strlen(uint8_t const *s)
 {
     asm volatile (            "\n"
     "    .set noreorder"      "\n"

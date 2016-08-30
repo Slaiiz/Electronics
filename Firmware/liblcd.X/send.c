@@ -1,6 +1,6 @@
 #include "liblcd.h"
 
-void        liblcd_send(LCD *lcd, uint8_t val, bool rs)
+void    liblcd_send(LCD *lcd, uint8_t val, bool rs)
 {
     /* Register select ---- */
     write_bit(lcd->pins.rs, rs);
