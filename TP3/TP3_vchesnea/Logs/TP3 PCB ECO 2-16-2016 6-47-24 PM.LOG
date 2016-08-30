@@ -1,4 +1,0 @@
-Added Component: Designator=R1(PDB181-K)
-Added Pin To Net: NetName=V3P3A Pin=R1-1
-Added Pin To Net: NetName=NetR1_2 Pin=R1-2
-Added Member To Class: ClassName=TP3 Member=Component R1 1k?
